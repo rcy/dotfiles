@@ -3,6 +3,8 @@ packages=					\
 	emacs					\
 	git					\
 	mail					\
+	make					\
+	nix					\
 	ratpoison
 
 stow:

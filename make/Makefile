@@ -1,9 +1,15 @@
 .PHONY: dotfiles
-dotfiles:
-	@$(MAKE) -C dotfiles dotfiles
+stow:
+	@$(MAKE) -C dotfiles stow
 
 pull:
 	cd dotfiles && git pull
+
+build:
+	home-manager build
+
+switch:
+	home-manager switch
 
 .ssh/id_rsa.pub .ssh/id_rsa:
 	ssh-keygen
