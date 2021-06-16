@@ -1,0 +1,18 @@
+[include]
+        path = ~/.gitconfig.local
+[user]
+	email = ryan@ryanyeske.com
+	name = Ryan Yeske
+[core]
+	excludesfile = ~/.gitignore_global
+        pager = /bin/cat
+[alias]
+        lol = log --pretty=oneline --graph --decorate
+        lastweek  = log --since '7 days' --oneline --pretty=format:'%h %an - %s (%cr)' --committer='Ryan Yeske'
+        yesterday = log --since '1 days' --oneline --pretty=format:'%h %an - %s (%cr)' --committer='Ryan Yeske'
+[push]
+        default = simple
+[color]
+	ui = auto
+[gitlab]
+	user = rcy
