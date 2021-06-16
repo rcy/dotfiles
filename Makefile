@@ -9,4 +9,3 @@ packages=					\
 
 stow:
 	stow -S $(packages)
-
