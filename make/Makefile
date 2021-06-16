@@ -1,9 +1,11 @@
-.PHONY: dotfiles
 stow:
-	@$(MAKE) -C dotfiles stow
+	@$(MAKE) -C .dotfiles stow
 
 pull:
-	cd dotfiles && git pull
+	cd .dotfiles && git pull
+
+push:
+	cd .dotfiles && git push
 
 build:
 	home-manager build
