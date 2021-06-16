@@ -8,5 +8,5 @@ packages=					\
 	ratpoison
 
 stow:
-	stow -v -S $(packages)
+	stow -S $(packages)
 
