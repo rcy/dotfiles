@@ -1,0 +1,6 @@
+bind e select emacs
+bind g select google-chrome
+set winname name
+bind M-s exec ~/bin/screenshot
+bind a exec ~/bin/rpbat
+bind grave nextscreen

@@ -1,0 +1,24 @@
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User ryanyeske@fastmail.com
+PassCmd "/bin/cat ~/private/fastmail-password"
+SSLType IMAPS
+SSLVersion TLSv1.2
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore fastmail-remote
+Account fastmail
+
+MaildirStore fastmail-local
+Path ~/Mail/fastmail/
+Inbox ~/Mail/fastmail/INBOX
+SubFolders Verbatim
+
+Channel fastmail
+Master :fastmail-remote:
+Slave :fastmail-local:
+Patterns *
+Create Both
+SyncState *
+Sync All

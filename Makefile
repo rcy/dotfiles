@@ -1,3 +1,10 @@
+packages=					\
+	bash					\
+	emacs					\
+	git					\
+	mail					\
+	ratpoison
+
 stow:
-	stow -v -S emacs git bash
+	stow -v -S $(packages)
 

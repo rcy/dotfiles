@@ -1,0 +1,49 @@
+.PHONY: dotfiles
+dotfiles:
+	@$(MAKE) -C dotfiles dotfiles
+
+pull:
+	cd dotfiles && git pull
+
+.ssh/id_rsa.pub .ssh/id_rsa:
+	ssh-keygen
+
+ssh: .ssh/id_rsa.pub
+	cat $<
+	@echo https://github.com/settings/ssh/new
+	@echo https://gitlab.com/profile/keys
+
+wifi: wifi-list wifi-connect
+wifi-list:
+	nmcli device wifi list
+wifi-connect:
+	nmcli device wifi connect $(SSID) --ask
+wifi-up:
+	nmcli device connect wlp2s0
+wifi-down:
+	nmcli device disconnect wlp2s0
+
+mail:
+	mbsync -a
+	notmuch new
+
+headphones:
+	 (echo connect 00:16:94:1E:55:28 && cat) | bluetoothctl
+
+headphones.force: restart-pulse-audio headphones
+
+restart-pulse-audio:
+	-pulseaudio --kill
+	pulseaudio --start
+
+trackpoint:
+	xinput --set-prop 'TPPS/2 Elan TrackPoint' 'libinput Accel Profile Enabled' 0, 1
+
+downloads: DIR=Downloads.$(shell date +%Y-%m)
+downloads:
+	-rm Downloads
+	mkdir -p $(DIR)
+	ln -s $(DIR) Downloads
+
+xorg-caps:
+	setxkbmap -option caps:ctrl_modifier
