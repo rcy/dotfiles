@@ -13,8 +13,8 @@ stow:
 unstow:
 	stow -D $(packages)
 
-reorigin:
-	git remote remove origin https
-	git remote add origin git@github.com:rcy/dotfiles.git
+# update the remote from an initial https bootstrap
+remote:
+	git remote set-url origin git@github.com:rcy/dotfiles.git
 	git fetch
 	git branch -u origin/main main
