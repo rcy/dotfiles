@@ -13,6 +13,11 @@ stow:
 unstow:
 	stow -D $(packages)
 
+update-crontab:
+	crontab -l
+	cat crontab | crontab -
+	crontab -l
+
 # update the remote from an initial https bootstrap
 remote:
 	git remote set-url origin git@github.com:rcy/dotfiles.git
