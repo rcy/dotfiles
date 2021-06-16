@@ -1,0 +1,5 @@
+* bootstrap new machine
+
+#+BEGIN_SRC shell
+curl https://raw.githubusercontent.com/rcy/dotfiles/main/bootstrap.sh | bash
+#+END_SRC
