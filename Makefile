@@ -13,10 +13,10 @@ stow:
 unstow:
 	stow -D $(packages)
 
-update-crontab:
-	crontab -l
+cron:
+	crontab -l > crontab.orig
 	cat crontab | crontab -
-	crontab -l
+	crontab -l | diff - crontab.orig && rm crontab.orig
 
 # update the remote from an initial https bootstrap
 remote:
