@@ -9,3 +9,6 @@ packages=					\
 
 stow:
 	stow -S $(packages)
+
+unstow:
+	stow -D $(packages)
