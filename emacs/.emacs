@@ -31,7 +31,7 @@
      ("ignore" "someday")
      ""))
  '(package-selected-packages
-   '(org-brain org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+   '(org-brain origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :password "foobar" :channels
       ("#emb #rcirc #emacs #djfullmoon")
@@ -158,14 +158,6 @@
 (winner-mode +1)
 (define-key winner-mode-map (kbd "<M-left>") #'winner-undo)
 (define-key winner-mode-map (kbd "<M-right>") #'winner-redo)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; org-roam
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(global-set-key (kbd "C-c n r") #'org-roam-buffer-toggle-display)
-(global-set-key (kbd "C-c n i") #'org-roam-insert)
-(global-set-key (kbd "C-c n f") #'org-roam-find-file)
-(global-set-key (kbd "C-c n t") #'org-roam-dailies-capture-today)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; misc keybindings
