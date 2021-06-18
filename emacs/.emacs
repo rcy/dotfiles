@@ -31,7 +31,7 @@
      ("ignore" "someday")
      ""))
  '(package-selected-packages
-   '(org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+   '(org-brain org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :password "foobar" :channels
       ("#emb #rcirc #emacs #djfullmoon")
@@ -171,3 +171,9 @@
 ;;; misc keybindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs")))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org-brain
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key org-mode-map (kbd "C-c b") 'org-brain-prefix-map)
+(global-set-key (kbd "C-c v") 'org-brain-visualize)
