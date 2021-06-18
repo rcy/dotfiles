@@ -31,7 +31,7 @@
      ("ignore" "someday")
      ""))
  '(package-selected-packages
-   '(origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+   '(org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :password "foobar" :channels
       ("#emb #rcirc #emacs #djfullmoon")
@@ -151,3 +151,18 @@
 (rcirc-track-minor-mode t)
 (setq rcirc-fill-column 'window-text-width)
 (setq rcirc-time-format "%H:%M:%S ")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; winner
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(winner-mode +1)
+(define-key winner-mode-map (kbd "<M-left>") #'winner-undo)
+(define-key winner-mode-map (kbd "<M-right>") #'winner-redo)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org-roam
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-c n r") #'org-roam-buffer-toggle-display)
+(global-set-key (kbd "C-c n i") #'org-roam-insert)
+(global-set-key (kbd "C-c n /") #'org-roam-find-file)
+(global-set-key (kbd "C-c n t") #'org-roam-dailies-capture-today)
