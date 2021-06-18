@@ -166,3 +166,8 @@
 (global-set-key (kbd "C-c n i") #'org-roam-insert)
 (global-set-key (kbd "C-c n f") #'org-roam-find-file)
 (global-set-key (kbd "C-c n t") #'org-roam-dailies-capture-today)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; misc keybindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs")))
