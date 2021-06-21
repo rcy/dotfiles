@@ -37,6 +37,7 @@
      ""))
  '(package-selected-packages
    '(org-brain origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+ '(pcomplete-ignore-case t)
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :channels
       ("#emb #rcirc #emacs #djfullmoon")
@@ -173,7 +174,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; org-brain
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key org-mode-map (kbd "C-c b") 'org-brain-prefix-map)
+(add-hook 'org-load-hook (lambda ()
+                           (define-key org-mode-map (kbd "C-c b") 'org-brain-prefix-map)))
 (global-set-key (kbd "C-c v") 'org-brain-visualize)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
