@@ -24,8 +24,7 @@
  ;; If there is more than one, they won't work right.
  '(ido-mode 'buffer nil (ido))
  '(indent-tabs-mode nil)
- '(org-agenda-files
-   '("~/org/projects/ryanyeske.com.org" "~/org/projects/collaborama.org" "~/org/projects/surabhi.org" "~/org/projects/personal.org" "~/org/shopping.org"))
+ '(org-agenda-files '("~/org/projects/personal.org" "~/org/shopping.org"))
  '(org-agenda-span 'day)
  '(org-archive-location "~/org/.archive.org::")
  '(org-drill-save-buffers-after-drill-sessions-p nil)
