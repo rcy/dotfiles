@@ -9,6 +9,7 @@
          (len (length unmistakable-chars)))
     (dotimes (i 17)
       (insert (elt unmistakable-chars (random len))))))
+(global-set-key (kbd "C-c i") 'rcy-insert-random-id)
 
 (defun rcy-prettify-json-region ()
   "Prettify json in region"
