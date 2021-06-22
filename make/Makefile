@@ -53,3 +53,7 @@ downloads:
 
 xorg-caps:
 	setxkbmap -option caps:ctrl_modifier
+
+# run to make sure all packages are installed
+emacs-package-install:
+	emacs --batch --load .emacs --eval '(package-install-selected-packages)'
