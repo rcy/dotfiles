@@ -61,7 +61,8 @@
  '(web-mode-enable-auto-quoting nil)
  '(web-mode-enable-comment-interpolation t)
  '(web-mode-enable-engine-detection t)
- '(web-mode-markup-indent-offset 2))
+ '(web-mode-markup-indent-offset 2)
+ '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -236,8 +237,3 @@
 ;;; comint
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; yasnippet
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(yas-global-mode 1)
