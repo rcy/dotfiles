@@ -13,7 +13,7 @@
     pkgs.tmux
     pkgs.emacs
     pkgs.jc
-    pkgs.signal-desktop
+    # pkgs.signal-desktop
   ];
 
   #home.file.".emacs".source = ./.emacs;
