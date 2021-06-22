@@ -11,6 +11,15 @@ build:
 switch:
 	home-manager switch
 
+install-nix:
+	sudo install -d -m755 -o $$(id -u) -g $$(id -g) /nix
+	curl -L https://nixos.org/nix/install | sh
+
+install-home-manager:
+	nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+	nix-channel --update
+	nix-shell '<home-manager>' -A install
+
 .ssh/id_rsa.pub .ssh/id_rsa:
 	ssh-keygen
 
