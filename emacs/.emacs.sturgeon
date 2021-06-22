@@ -1,2 +1,1 @@
-(message "loading sturgeon")
 (set-frame-font ":pixelsize=16")
