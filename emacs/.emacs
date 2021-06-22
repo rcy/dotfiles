@@ -27,13 +27,17 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-enabled-themes '(deeper-blue))
+ '(display-battery-mode t)
+ '(display-time-mode t)
  '(enable-recursive-minibuffers t)
  '(ido-mode 'buffer nil (ido))
  '(indent-tabs-mode nil)
+ '(magit-diff-refine-hunk 'all)
  '(menu-bar-mode nil)
  '(org-agenda-files '("~/org/projects/personal.org" "~/org/shopping.org"))
  '(org-agenda-span 'day)
- '(org-archive-location "~/org/.archive.org::")
+ '(org-archive-location ".archive.org::datetree/* From %s")
+ '(org-cycle-global-at-bob t)
  '(org-drill-save-buffers-after-drill-sessions-p nil)
  '(org-drill-scope '("~/org/drill.org"))
  '(org-refile-targets '((org-agenda-files :maxlevel . 2)))
@@ -50,6 +54,7 @@
       ("#emb #rcirc #emacs #djfullmoon")
       :encryption tls)))
  '(scroll-bar-mode nil)
+ '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(web-mode-code-indent-offset 2)
  '(web-mode-enable-auto-quoting nil)
@@ -78,6 +83,12 @@
 (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mjml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ruby
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'auto-mode-alist '("Gemfile." . ruby-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; org-mode
@@ -157,7 +168,22 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; random keybindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(ffap-bindings)
+(global-set-key (kbd "C-c /") 'comment-region)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c C") 'compile)
+(global-set-key (kbd "C-c g") 'git-link)
+(global-set-key (kbd "C-c h") 'hl-line-mode)
+(global-set-key (kbd "C-c i") 'rcy-insert-random-id)
+(global-set-key (kbd "C-c J") 'rcy-prettify-json-region)
+(global-set-key (kbd "C-c j") 'webjump)
 (global-set-key (kbd "C-c k") 'comment-region)
+(global-set-key (kbd "C-c m") 'notmuch)
+(global-set-key (kbd "C-c P") 'rcy-insert-xkcd-password)
+(global-set-key (kbd "C-c q") 'quick-calc)
+(global-set-key (kbd "C-c r") 'org-capture)
+(global-set-key (kbd "C-c R") 'remember)
+(global-set-key (kbd "C-c T") 'rcy-insert-time)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; rcirc
@@ -204,3 +230,8 @@
 ;;; paren
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (show-paren-mode 1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; comint
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
