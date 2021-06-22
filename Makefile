@@ -14,7 +14,7 @@ unstow:
 	stow -D $(packages)
 
 cron:
-	crontab -l > crontab.orig
+	-crontab -l > crontab.orig
 	cat crontab | crontab -
 	crontab -l | diff - crontab.orig && rm crontab.orig
 
