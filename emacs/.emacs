@@ -27,6 +27,7 @@
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(custom-enabled-themes '(deeper-blue))
+ '(enable-recursive-minibuffers t)
  '(ido-mode 'buffer nil (ido))
  '(indent-tabs-mode nil)
  '(menu-bar-mode nil)
