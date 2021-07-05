@@ -48,7 +48,7 @@
      ("ignore" "someday")
      ""))
  '(package-selected-packages
-   '(yasnippet markdown-mode deft org-brain org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+   '(rust-mode git-link yasnippet markdown-mode deft org-brain org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
  '(pcomplete-ignore-case t)
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :channels
