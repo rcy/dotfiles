@@ -17,5 +17,5 @@ alias ns="nix-shell"
 
 # pndev
 alias pn="pndev"
-alias pnes="cd $HOME/DEV/PN/eternal-sledgehammer"
+alias pnes="cd $HOME/DEV/PN/eternal-sledgehammer && nix-shell"
 alias pninf="cd $HOME/DEV/PN/infrastructure && nix-shell"
