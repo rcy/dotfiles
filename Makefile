@@ -5,7 +5,8 @@ packages=					\
 	mail					\
 	make					\
 	nix					\
-	ratpoison
+	ratpoison				\
+	ruby
 
 stow:
 	stow -S $(packages)
