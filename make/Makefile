@@ -56,7 +56,7 @@ trackpoint:
 
 downloads: DIR=Downloads.$(shell date +%Y-%m)
 downloads:
-	-rm Downloads
+	rm Downloads
 	mkdir -p $(DIR)
 	ln -s $(DIR) Downloads
 
