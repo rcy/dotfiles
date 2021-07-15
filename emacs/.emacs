@@ -62,16 +62,15 @@
  '(web-mode-enable-comment-interpolation t)
  '(web-mode-enable-engine-detection t)
  '(web-mode-markup-indent-offset 2)
-  '(webjump-sites
-   (quote
-    (("JIRA (Pn)" .
+ '(webjump-sites
+   '(("JIRA (Pn)" .
       [simple-query "https://precisionnutrition.atlassian.net/jira/your-work" "https://precisionnutrition.atlassian.net/browse/" ""])
      ("DuckDuckGo" .
       [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])
      ("Google" .
       [simple-query "www.google.com" "www.google.com/search?q=" ""])
      ("Wikipedia" .
-      [simple-query "wikipedia.org" "wikipedia.org/wiki/" ""]))))
+      [simple-query "wikipedia.org" "wikipedia.org/wiki/" ""])))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
