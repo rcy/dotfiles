@@ -18,3 +18,5 @@
 	user = rcy
 [pull]
 	ff = only
+[credential]
+	helper = store
