@@ -31,7 +31,6 @@
  '(display-battery-mode t)
  '(display-time-mode t)
  '(enable-recursive-minibuffers t)
- '(ido-mode 'buffer nil (ido))
  '(indent-tabs-mode nil)
  '(magit-diff-refine-hunk 'all)
  '(menu-bar-mode nil)
@@ -48,7 +47,7 @@
      ("ignore" "someday")
      ""))
  '(package-selected-packages
-   '(rust-mode git-link yasnippet markdown-mode deft org-brain org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+   '(rcirc-styles rubocopfmt consult-spotify consult orderless rust-mode git-link yasnippet markdown-mode deft org-brain org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
  '(pcomplete-ignore-case t)
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :channels
@@ -63,7 +62,9 @@
  '(web-mode-enable-engine-detection t)
  '(web-mode-markup-indent-offset 2)
  '(webjump-sites
-   '(("JIRA (Pn)" .
+   '((#("JIRA (Pn)" 0 9
+        (face nil))
+      .
       [simple-query "https://precisionnutrition.atlassian.net/jira/your-work" "https://precisionnutrition.atlassian.net/browse/" ""])
      ("DuckDuckGo" .
       [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])
@@ -77,9 +78,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "yellow")))))
+ '(cursor ((t (:background "yellow"))))
+ '(highlight ((t (:background "dark green" :foreground "white" :underline nil))))
+ '(region ((t (:extend t :background "#000077" :foreground "white")))))
 
-(package-install-selected-packages)
+;;(package-install-selected-packages)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; web-mode
@@ -187,12 +190,12 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c C") 'compile)
 (global-set-key (kbd "C-c g") 'git-link)
-(global-set-key (kbd "C-c h") 'hl-line-mode)
+(global-set-key (kbd "C-c H") 'hl-line-mode)
 (global-set-key (kbd "C-c i") 'rcy-insert-random-id)
 (global-set-key (kbd "C-c J") 'rcy-prettify-json-region)
 (global-set-key (kbd "C-c j") 'webjump)
 (global-set-key (kbd "C-c k") 'comment-region)
-(global-set-key (kbd "C-c m") 'notmuch)
+;;(global-set-key (kbd "C-c m") 'notmuch)
 (global-set-key (kbd "C-c P") 'rcy-insert-xkcd-password)
 (global-set-key (kbd "C-c q") 'quick-calc)
 (global-set-key (kbd "C-c r") 'org-capture)
@@ -254,3 +257,93 @@
 ;;; theme path
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; vertico
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Enable vertico
+(use-package vertico
+  :init
+  (vertico-mode)
+
+  ;; Grow and shrink the Vertico minibuffer
+  (setq vertico-resize t)
+
+  ;; Optionally enable cycling for `vertico-next' and `vertico-previous'.
+  (setq vertico-cycle t)
+  )
+
+;; ;; Configure directory extension
+;; (use-package vertico-directory
+;;   ;; More convenient directory navigation commands
+;;   :bind (:map vertico-map
+;;               ("RET" . vertico-directory-enter)
+;;               ("DEL" . vertico-directory-delete-char)
+;;               ("M-DEL" . vertico-directory-delete-word))
+;;   ;; Tidy shadowed file names
+;;   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+
+;; Use the `orderless' completion style.
+;; Enable `partial-completion' for files to allow path expansion.
+;; You may prefer to use `initials' instead of `partial-completion'.
+(use-package orderless
+  :init
+  (setq completion-styles '(orderless)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
+;; Persist history over Emacs restarts. Vertico sorts by history position.
+(use-package savehist
+  :init
+  (savehist-mode))
+
+(use-package consult
+  :init
+  (setq consult-project-root-function #'vc-root-dir)
+  (setq consult-narrow-key "<") ;; (kbd "C-+")
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c h" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ("C-c b" . consult-bookmark)
+         ("C-c k" . consult-kmacro)
+         ;; C-x bindings (ctl-x-map)
+         ("C-x M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("C-x b" . consult-buffer)                ;; orig. switch-to-buffer
+         ("C-x 4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("C-x 5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ("M-'" . consult-register-store)          ;; orig. abbrev-prefix-mark (unrelated)
+         ("C-M-#" . consult-register)
+         ;; Other custom bindings
+         ("M-y" . consult-yank-pop)                ;; orig. yank-pop
+         ("<help> a" . consult-apropos)            ;; orig. apropos-command
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ("M-g f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ("M-g g" . consult-goto-line)             ;; orig. goto-line
+         ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+         ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g i" . consult-imenu)
+         ("M-g I" . consult-project-imenu)
+         ;; M-s bindings (search-map)
+         ("M-s f" . consult-find)
+         ("M-s L" . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ("M-s r" . consult-ripgrep)
+         ("M-s l" . consult-line)
+         ("M-s m" . consult-multi-occur)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ;; Isearch integration
+         ("M-s e" . consult-isearch)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch)                 ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch)               ;; orig. isearch-edit-string
+         ("M-s l" . consult-line))                 ;; needed by consult-line to detect isearch
+  )
+
+(put 'dired-find-alternate-file 'disabled nil)
