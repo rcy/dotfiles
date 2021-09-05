@@ -66,3 +66,9 @@ xorg-caps:
 # run to make sure all packages are installed
 emacs-package-install:
 	emacs --batch --load .emacs --eval '(package-install-selected-packages)'
+
+mlbv-tor-vpn:
+	-rm .config/mlbv/cookies
+	-rm .config/mlbv/session
+	nordvpn connect us8945
+	mlbv -t tor
