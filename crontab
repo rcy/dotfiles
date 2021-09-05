@@ -1,1 +1,5 @@
+# rotate downloads
 0 0 * * * make -C $HOME downloads
+
+# update mlb standings blog
+0 * * * * make -C $HOME/blot/balg/_make clean today
