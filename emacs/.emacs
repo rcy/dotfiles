@@ -222,6 +222,7 @@
 ;;; misc keybindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs")))
+(global-set-key (kbd "C-c E") (lambda () (interactive) (find-file (format "~/.emacs.%s" (system-name)))))
 (global-set-key (kbd "C-c h") 'hl-line-mode)
 (global-set-key (kbd "C-c d") 'deft)
 
