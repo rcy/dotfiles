@@ -35,7 +35,7 @@
  '(magit-diff-refine-hunk 'all)
  '(menu-bar-mode nil)
  '(ns-command-modifier 'meta)
- '(org-agenda-files '("~/org/projects/personal.org" "~/org/shopping.org"))
+ '(org-agenda-files '("~/org"))
  '(org-agenda-span 'day)
  '(org-archive-location ".archive.org::datetree/* From %s")
  '(org-cycle-global-at-bob t)
