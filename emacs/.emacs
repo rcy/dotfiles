@@ -48,7 +48,7 @@
      ("ignore" "someday")
      ""))
  '(package-selected-packages
-   '(vertico rcirc-styles rubocopfmt consult-spotify consult orderless rust-mode git-link yasnippet markdown-mode deft org-brain org-roam origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+   '(vertico rcirc-styles rubocopfmt consult-spotify consult orderless rust-mode git-link yasnippet markdown-mode deft org-brain origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
  '(pcomplete-ignore-case t)
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :channels
@@ -199,8 +199,8 @@
 ;;(global-set-key (kbd "C-c m") 'notmuch)
 (global-set-key (kbd "C-c P") 'rcy-insert-xkcd-password)
 (global-set-key (kbd "C-c q") 'quick-calc)
-(global-set-key (kbd "C-c r") 'org-capture)
-(global-set-key (kbd "C-c R") 'remember)
+(global-set-key (kbd "C-c o c") 'org-capture)
+;;(global-set-key (kbd "C-c R") 'remember)
 (global-set-key (kbd "C-c T") 'rcy-insert-time)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -349,3 +349,34 @@
   )
 
 (put 'dired-find-alternate-file 'disabled nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org-roam
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package org-roam
+;;  :after org
+  :init
+  (setq org-roam-v2-ack t)
+  (make-directory "~/Dropbox/org-roam" t)
+  (setq org-roam-directory (file-truename "~/Dropbox/org")) ;; FIXME
+  (make-directory (concat org-roam-directory "/daily") t)
+  (setq org-roam-dailies-directory "daily/")
+  (org-roam-db-autosync-mode)
+  (add-to-list 'display-buffer-alist
+             '("\\*org-roam\\*"
+               (display-buffer-in-direction)
+               (direction . right)
+               (window-width . 0.33)
+               (window-height . fit-window-to-buffer)))
+  :bind (
+         ("C-c n c" . org-roam-capture)
+         ("C-c n f" . org-roam-node-find)
+         ("C-c n i" . org-roam-node-insert)
+         ("C-c n b" . org-roam-buffer-toggle)
+         )
+  )
+
+(defun rcy/org-grep (regexp)
+  (interactive "sorg-grep regex: ")
+  (rgrep regexp "*.org" org-directory nil))
+(global-set-key (kbd "C-c n g") 'rcy/org-grep)
