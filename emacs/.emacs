@@ -42,6 +42,7 @@
  '(org-cycle-global-at-bob t)
  '(org-drill-save-buffers-after-drill-sessions-p nil)
  '(org-drill-scope '("~/Dropbox/org/drill.org"))
+ '(org-image-actual-width '(640))
  '(org-refile-targets '((org-agenda-files :maxlevel . 2)))
  '(org-stuck-projects
    '("+project-someday/-DONE"
