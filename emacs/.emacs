@@ -35,12 +35,12 @@
  '(magit-diff-refine-hunk 'all)
  '(menu-bar-mode nil)
  '(ns-command-modifier 'meta)
- '(org-agenda-files '("~/org"))
+ '(org-agenda-files '("~/Dropbox/org" "~/Dropbox/org/daily"))
  '(org-agenda-span 'day)
  '(org-archive-location ".archive.org::datetree/* From %s")
  '(org-cycle-global-at-bob t)
  '(org-drill-save-buffers-after-drill-sessions-p nil)
- '(org-drill-scope '("~/org/drill.org"))
+ '(org-drill-scope '("~/Dropbox/org/drill.org"))
  '(org-refile-targets '((org-agenda-files :maxlevel . 2)))
  '(org-stuck-projects
    '("+project-someday/-DONE"
@@ -111,27 +111,27 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; org-mode
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq org-directory "~/org")
+(setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 (setq org-capture-templates
-      `(("i" "Inbox" entry (file+headline "~/org/inbox.org" "Inbox")
+      `(("i" "Inbox" entry (file+headline "~/Dropbox/org/inbox.org" "Inbox")
          "* %?\n%i\n")
-	;; ("t" "Todo" entry (file+headline "~/org/gtd.org" "Tasks")
+	;; ("t" "Todo" entry (file+headline "~/Dropbox/org/gtd.org" "Tasks")
         ;;  "* NEXT %? %i\n")
-	("p" "Personal Project" entry (file+headline "~/org/projects/personal.org" "Personal Projects")
+	("p" "Personal Project" entry (file+headline "~/Dropbox/org/personal.org" "Personal Projects")
          "* %?")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
          "* %<%H:%M>\n\n%?%i"
 	 :empty-lines 1
 	 :unnarrowed nil
 	 )
-	("r" "Reading" entry (file+headline "~/org/reading.org" "Reading")
+	("r" "Reading" entry (file+headline "~/Dropbox/org/reading.org" "Reading")
          "* %?")
-	("w" "Wishlist" entry (file+headline "~/org/wishlist.org" "Wishlist")
+	("w" "Wishlist" entry (file+headline "~/Dropbox/org/wishlist.org" "Wishlist")
          "* %?")
-	("s" "Shopping" entry (file+headline "~/org/shopping.org" "Shopping")
+	("s" "Shopping" entry (file+headline "~/Dropbox/org/shopping.org" "Shopping")
          "* BUY %?")
-	("d" "Drill" entry (file+headline "~/org/drill.org" "Drill")
+	("d" "Drill" entry (file+headline "~/Dropbox/org/drill.org" "Drill")
 	 ,(concat "* Item :drill:\n"
 		  "  :PROPERTIES:\n"
 		  "  :DRILL_CARD_TYPE: hide1cloze\n"
@@ -140,7 +140,6 @@
 	 :empty-lines 1
 	 )))
 
-(global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c r") 'org-capture) ;;; remember
 (global-set-key (kbd "C-c l") 'org-store-link)
 
@@ -149,7 +148,7 @@
 
 
 (setq org-feed-alist
-      '(("hn" "https://hnrss.org/frontpage" "~/org/feeds.org" "hn")))
+      '(("hn" "https://hnrss.org/frontpage" "~/Dropbox/org/feeds.org" "hn")))
 
 (setq org-agenda-todo-ignore-scheduled 'all)
 
@@ -241,7 +240,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; deft
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq deft-directory "~/org")
+(setq deft-directory "~/Dropbox/org")
 (setq deft-default-extension "org")
 (setq deft-markdown-mode-title-level 1)
 
@@ -354,6 +353,7 @@
 ;;; org-roam
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (use-package org-roam
+  :ensure t
 ;;  :after org
   :init
   (setq org-roam-v2-ack t)
@@ -373,10 +373,33 @@
          ("C-c n f" . org-roam-node-find)
          ("C-c n i" . org-roam-node-insert)
          ("C-c n b" . org-roam-buffer-toggle)
+
+         ("C-c n d ." . org-roam-dailies-goto-today)
+         ("C-c n d d" . org-roam-dailies-goto-date)
+         ("C-c n d <" . org-roam-dailies-goto-yesterday)
+         ("C-c n d >" . org-roam-dailies-goto-tomorrow)
+         ("C-c n d c" . org-roam-dailies-capture-date)
          )
   )
 
 (defun rcy/org-grep (regexp)
   (interactive "sorg-grep regex: ")
-  (rgrep regexp "*.org" org-directory nil))
+  (grep-compute-defaults)
+  (rgrep regexp "*.org" org-directory))
 (global-set-key (kbd "C-c n g") 'rcy/org-grep)
+
+;; TODO: install these better
+(require 'org-protocol)
+(require 'org-roam-protocol)
+
+(setq org-roam-capture-templates
+      '(("d" "default" plain "%?" :target
+         (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
+")
+         :unnarrowed t)
+        ("p" "project" plain "%?" :target
+         (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
+#+filetags: :project:
+* STUCK
+")
+         :unnarrowed t)))
