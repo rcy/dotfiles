@@ -37,7 +37,7 @@
  '(menu-bar-mode nil)
  '(ns-command-modifier 'meta)
  '(org-adapt-indentation nil)
- '(org-agenda-files '("~/Dropbox/org" "~/Dropbox/org/daily"))
+ '(org-agenda-files '("~/Dropbox/org" "~/Dropbox/org/daily" "~/Dropbox/org/projects"))
  '(org-agenda-span 'day)
  '(org-archive-location ".archive.org::datetree/* From %s")
  '(org-cycle-global-at-bob t)
@@ -399,11 +399,13 @@
 (setq org-roam-capture-templates
       '(("d" "default" plain "%?" :target
          (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
-")
-         :unnarrowed t)
-        ("p" "project" plain "%?" :target
-         (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
+"))
+        ("p" "project" plain "
+* ${title}
+%?"
+         :target (file+head "projects/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
 #+filetags: :project:
-* STUCK
 ")
-         :unnarrowed t)))
+         :empty-lines-before 1
+         :unnarrowed t)
+))
