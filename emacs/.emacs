@@ -36,6 +36,7 @@
  '(magit-diff-refine-hunk 'all)
  '(menu-bar-mode nil)
  '(ns-command-modifier 'meta)
+ '(org-adapt-indentation nil)
  '(org-agenda-files '("~/Dropbox/org" "~/Dropbox/org/daily"))
  '(org-agenda-span 'day)
  '(org-archive-location ".archive.org::datetree/* From %s")
