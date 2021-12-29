@@ -6,7 +6,8 @@ packages=					\
 	make					\
 	nix					\
 	ratpoison				\
-	ruby
+	ruby			                \
+	tmux
 
 stow:
 	stow -S $(packages)
