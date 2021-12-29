@@ -52,8 +52,8 @@
  '(org-image-actual-width '(640))
  '(org-refile-targets '((org-agenda-files :maxlevel . 2)))
  '(org-stuck-projects
-   '("+project-someday/-DONE"
-     ("WAITING" "TODO" "NEXT" "DELEGATED" "CANCELLED")
+   '("+project-someday/-DONE-CANCELLED"
+     ("WAITING" "TODO" "NEXT" "DELEGATED")
      ("ignore" "someday")
      ""))
  '(package-selected-packages
