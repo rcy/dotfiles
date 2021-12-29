@@ -5,6 +5,7 @@
 (ignore-errors (load (format "~/.emacs.%s" (system-name))))
 ;;(add-to-list 'load-path "~/elisp")
 (load "~/elisp/rcy-util.el")
+(setq visible-bell t)
 
 (use-package jira-at-point
   :load-path "~/elisp"
