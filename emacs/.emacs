@@ -392,6 +392,8 @@
 
          ("C-c n t a" . org-roam-tag-add)
          ("C-c n t r" . org-roam-tag-remove)
+
+         ("C-c n ." . org-roam-dailies-capture-today)
          )
   )
 
@@ -406,9 +408,12 @@
 (require 'org-roam-protocol)
 
 (setq org-roam-capture-templates
-      '(("d" "default" plain "%?" :target
-         (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
+      '(
+        ;; default
+        ("d" "default" plain "%?"
+         :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
 "))
+        ;; project
         ("p" "project" plain "
 * ${title}
 %?"
@@ -418,3 +423,13 @@
          :empty-lines-before 1
          :unnarrowed t)
 ))
+
+(setq org-roam-dailies-capture-templates
+      '(
+        ("d" "default" entry "* NEXT [#A] %?" :target
+         (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
+"))
+;;         ("i" "daily inbox" entry "* %?" :target
+;;          (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
+;; " ("NEXT [#A] INBOX")))
+        ))
