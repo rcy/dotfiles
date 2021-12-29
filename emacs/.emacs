@@ -3,7 +3,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (ignore-errors (load "~/.emacs.private"))
 (ignore-errors (load (format "~/.emacs.%s" (system-name))))
+;;(add-to-list 'load-path "~/elisp")
 (load "~/elisp/rcy-util.el")
+
+(use-package jira-at-point
+  :load-path "~/elisp"
+  :bind (("C-c j" . rcy/browse-jira-issue-at-point)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; package
@@ -196,7 +201,7 @@
 (global-set-key (kbd "C-c H") 'hl-line-mode)
 (global-set-key (kbd "C-c i") 'rcy-insert-random-id)
 (global-set-key (kbd "C-c J") 'rcy-prettify-json-region)
-(global-set-key (kbd "C-c j") 'webjump)
+;;(global-set-key (kbd "C-c j") 'webjump)
 (global-set-key (kbd "C-c k") 'comment-region)
 ;;(global-set-key (kbd "C-c m") 'notmuch)
 (global-set-key (kbd "C-c P") 'rcy-insert-xkcd-password)
