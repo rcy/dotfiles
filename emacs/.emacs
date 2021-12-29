@@ -43,7 +43,8 @@
  '(menu-bar-mode nil)
  '(ns-command-modifier 'meta)
  '(org-adapt-indentation nil)
- '(org-agenda-files '("~/Dropbox/org" "~/Dropbox/org/daily" "~/Dropbox/org/projects"))
+ '(org-agenda-files
+   '("~/Dropbox/org" "~/Dropbox/org/daily" "~/Dropbox/org/projects"))
  '(org-agenda-span 'day)
  '(org-archive-location ".archive.org::datetree/* From %s")
  '(org-cycle-global-at-bob t)
@@ -52,8 +53,8 @@
  '(org-image-actual-width '(640))
  '(org-refile-targets '((org-agenda-files :maxlevel . 2)))
  '(org-stuck-projects
-   '("+project-someday/-DONE-CANCELLED"
-     ("WAITING" "TODO" "NEXT" "DELEGATED")
+   '("+project-someday/-DONE"
+     ("WAITING" "TODO" "NEXT" "DELEGATED" "CANCELLED")
      ("ignore" "someday")
      ""))
  '(package-selected-packages
