@@ -388,6 +388,9 @@
          ("C-c n d <" . org-roam-dailies-goto-yesterday)
          ("C-c n d >" . org-roam-dailies-goto-tomorrow)
          ("C-c n d c" . org-roam-dailies-capture-date)
+
+         ("C-c n t a" . org-roam-tag-add)
+         ("C-c n t r" . org-roam-tag-remove)
          )
   )
 
