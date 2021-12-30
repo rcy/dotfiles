@@ -37,6 +37,9 @@
         (ignore-error user-error
           (org-roam-tag-remove ["agenda"]))))))
 
+;; prevent every node in the file inheriting the :agenda: tag
+(add-to-list 'org-tags-exclude-from-inheritance "agenda")
+
 ;;(remove-hook 'find-file-hook #'rcy/roam-agenda-current-buffer-update-tag)
 (add-hook 'before-save-hook #'rcy/roam-agenda-current-buffer-update-tag)
 
