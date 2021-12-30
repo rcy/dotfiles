@@ -11,6 +11,10 @@
   :load-path "~/elisp"
   :bind (("C-c j" . rcy/browse-jira-issue-at-point)))
 
+(use-package rcy-roam-agenda
+  :demand
+  :load-path "~/elisp")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; package
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -43,8 +47,6 @@
  '(menu-bar-mode nil)
  '(ns-command-modifier 'meta)
  '(org-adapt-indentation nil)
- '(org-agenda-files
-   '("~/Dropbox/org" "~/Dropbox/org/daily" "~/Dropbox/org/projects"))
  '(org-agenda-span 'day)
  '(org-archive-location ".archive.org::datetree/* From %s")
  '(org-cycle-global-at-bob t)
