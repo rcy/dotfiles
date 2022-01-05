@@ -439,6 +439,3 @@
 ;;          (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
 ;; " ("NEXT [#A] INBOX")))
         ))
-
-;;; dashboard
-(dashboard-setup-startup-hook)
