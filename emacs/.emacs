@@ -13,6 +13,7 @@
 
 (use-package rcy-roam-agenda
   :demand
+  :after org-roam
   :load-path "~/elisp")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
