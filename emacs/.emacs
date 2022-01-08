@@ -65,7 +65,7 @@
  '(pcomplete-ignore-case t)
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :channels
-      ("#emb #rcirc #emacs #djfullmoon")
+      ("#emb #rcirc #tasteslikeme #djfullmoon")
       :encryption tls)))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
