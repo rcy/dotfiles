@@ -157,6 +157,7 @@
 
 (global-set-key (kbd "C-c r") 'org-capture) ;;; remember
 (global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c B") 'bury-buffer)
 
 (setq org-todo-keywords
       '((sequence "NEXT(n)" "WAITING(w)" "DELEGATED(g)" "|" "DONE(d)" "CANCELLED(c)")))
