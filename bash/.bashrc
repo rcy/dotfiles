@@ -123,7 +123,7 @@ fi
 
 # emacs shells are dumb
 if test $TERM = "dumb"; then
-    export PAGER=/bin/cat
+    export PAGER=cat
     export NODE_NO_READLINE=1
 fi
 
