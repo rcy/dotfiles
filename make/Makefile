@@ -26,7 +26,7 @@ install-home-manager:
 ssh: .ssh/id_rsa.pub
 	cat $<
 	@echo https://github.com/settings/ssh/new
-	@echo https://gitlab.com/profile/keys
+	@echo https://gitlab.com/-/profile/keys
 
 wifi: wifi-list wifi-connect
 wifi-list:
