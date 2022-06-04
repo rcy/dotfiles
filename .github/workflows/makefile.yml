@@ -1,10 +1,10 @@
 name: Makefile CI
 
 on:
-  push:
-    branches: [ "main" ]
+  # push:
+  #   branches: [ "main", "make-actions" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "make-actions" ]
 
 jobs:
   build:
@@ -14,14 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: configure
-      run: ./configure
+    - name: install deps
+      run: sudo apt-get install -y stow emacs aspell
+
+    - name: stow
+      run: make stow
+
+    - name: tree
+      run: ls -lRa /home/runner/work/dotfiles
       
-    - name: Install dependencies
-      run: make
-      
-    - name: Run check
-      run: make check
-      
-    - name: Run distcheck
-      run: make distcheck
+    - name: emacs
+      run: HOME=/home/runner/work/dotfiles emacs --batch --load /home/runner/work/dotfiles/.emacs --eval '(kill-emacs)'
