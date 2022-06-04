@@ -21,7 +21,7 @@ jobs:
       run: make stow
 
     - name: tree
-      run: ls -lR /home/runner
+      run: ls -lRa /home/runner/work/dotfiles
       
     - name: emacs
-      run: emacs --batch --load ./.emacs --eval '(kill-emacs)'
+      run: HOME=/home/runner/work/dotfiles emacs --batch --load /home/runner/work/dotfiles/.emacs --eval '(kill-emacs)'
