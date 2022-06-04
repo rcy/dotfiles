@@ -1,8 +1,8 @@
 name: Makefile CI
 
 on:
-  push:
-    branches: [ "main", "make-actions" ]
+  # push:
+  #   branches: [ "main", "make-actions" ]
   pull_request:
     branches: [ "main", "make-actions" ]
 
@@ -20,5 +20,8 @@ jobs:
     - name: stow
       run: make stow
 
+    - name: pwd
+      run: pwd
+      
     - name: emacs
-      run: emacs --batch --load .emacs --eval '(kill-emacs)'
+      run: emacs --batch --load ./.emacs --eval '(kill-emacs)'
