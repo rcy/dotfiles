@@ -294,3 +294,6 @@
 
 (use-package magit
   :ensure t)
+
+(use-package yaml-mode
+  :ensure t)
