@@ -15,7 +15,10 @@ jobs:
     - uses: actions/checkout@v3
     
     - name: install deps
-      run: sudo apt-get install -y stow
+      run: sudo apt-get install -y stow emacs
 
     - name: stow
       run: make stow
+
+    - name: emacs
+      run: emacs --batch --load .emacs --eval '(kill-emacs)'
