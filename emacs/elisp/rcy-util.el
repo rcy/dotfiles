@@ -42,3 +42,10 @@
   "Insert a xkcd style password."
   (interactive)
   (insert (xkcd-password)))
+
+(defun rcy/org-grep (regexp)
+  (interactive "sorg-grep regex: ")
+  (grep-compute-defaults)
+  (rgrep regexp "*.org" org-directory))
+
+(provide 'rcy-util)
