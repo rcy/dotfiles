@@ -297,3 +297,15 @@
 
 (use-package yaml-mode
   :ensure t)
+
+(use-package go-mode
+  :ensure t)
+
+(use-package dockerfile-mode
+  :ensure t)
+
+(use-package nix-mode
+  :ensure t)
+
+(use-package markdown-mode
+  :ensure t)
