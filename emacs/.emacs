@@ -136,7 +136,7 @@
 ;;  :after org
   :init
   (setq org-roam-v2-ack t)
-  (make-directory "~/Dropbox/org-roam" t)
+  (make-directory "~/Dropbox/org" t)
   (setq org-roam-directory (file-truename "~/Dropbox/org")) ;; FIXME
   (make-directory (concat org-roam-directory "/daily") t)
   (setq org-roam-dailies-directory "daily/")
