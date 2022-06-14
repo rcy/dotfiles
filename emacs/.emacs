@@ -309,3 +309,6 @@
 
 (use-package markdown-mode
   :ensure t)
+
+(use-package git-link
+  :ensure t)
