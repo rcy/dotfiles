@@ -312,3 +312,10 @@
 
 (use-package git-link
   :ensure t)
+
+(use-package server
+  :ensure t
+  :init
+  (make-directory server-socket-dir t)
+  (chmod server-socket-dir #o700)
+  (server-start))
