@@ -318,4 +318,4 @@
   :init
   (make-directory server-socket-dir t)
   (chmod server-socket-dir #o700)
-  (server-start))
+  (ignore-errors (server-start)))
