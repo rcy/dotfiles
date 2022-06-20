@@ -65,4 +65,11 @@
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "yellow"))))
  '(highlight ((t (:background "dark green" :foreground "white" :underline nil))))
+ '(magit-diff-added ((((type tty)) (:foreground "green"))))
+ '(magit-diff-added-highlight ((((type tty)) (:foreground "LimeGreen"))))
+ '(magit-diff-context-highlight ((((type tty)) (:foreground "default"))))
+ '(magit-diff-file-heading ((((type tty)) nil)))
+ '(magit-diff-removed ((((type tty)) (:foreground "red"))))
+ '(magit-diff-removed-highlight ((((type tty)) (:foreground "IndianRed"))))
+ '(magit-section-highlight ((((type tty)) nil)))
  '(region ((t (:extend t :background "#000077" :foreground "white")))))
