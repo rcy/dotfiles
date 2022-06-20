@@ -133,7 +133,7 @@
 
 (use-package org-roam
   :ensure t
-;;  :after org
+  :after org
   :init
   (setq org-roam-v2-ack t)
   (make-directory "~/Dropbox/org" t)
