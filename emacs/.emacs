@@ -164,12 +164,12 @@
           ))
   (setq org-roam-dailies-capture-templates
         '(
-          ("d" "default" entry "* NEXT [#A] %?" :target
+          ("d" "default" entry "* TODO [#A] %?" :target
            (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
 "))
           ;;         ("i" "daily inbox" entry "* %?" :target
           ;;          (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
-          ;; " ("NEXT [#A] INBOX")))
+          ;; " ("TODO [#A] INBOX")))
           ))
   :config
   (org-roam-db-autosync-mode)
@@ -219,17 +219,17 @@
   (global-set-key (kbd "C-c l") 'org-store-link)
   :config
   (setq org-todo-keywords
-        '((sequence "NEXT(n)" "WAITING(w)" "DELEGATED(g)" "|" "DONE(d)" "CANCELLED(c)")))
+        '((sequence "TODO(t)" "NEXT(n)" "WAITING(w)" "DELEGATED(g)" "|" "DONE(d)" "CANCELLED(c)")))
 
   (setq org-directory "~/Dropbox/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
         `(("x" "Dynamic Inbox" entry (file ,(format "~/Dropbox/org/inbox.%s.org" system-name))
-           "\n* NEXT [#A] %?")
+           "\n* TODO [#A] %?")
           ("i" "Inbox" entry (file+headline "~/Dropbox/org/inbox.org" "Inbox")
            "* %?\n%i\n")
 	  ;; ("t" "Todo" entry (file+headline "~/Dropbox/org/gtd.org" "Tasks")
-          ;;  "* NEXT %? %i\n")
+          ;;  "* TODO %? %i\n")
 	  ("p" "Personal Project" entry (file+headline "~/Dropbox/org/personal.org" "Personal Projects")
            "* %?")
           ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
