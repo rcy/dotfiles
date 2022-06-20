@@ -7,6 +7,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
+ '(completion-ignore-case t t)
  '(custom-enabled-themes '(wombat))
  '(display-battery-mode t)
  '(display-time-mode t)
@@ -31,7 +32,7 @@
      ""))
  '(package-selected-packages
    '(dockerfile-mode docker-mode go-mode yaml projectilex org-roam dashboard vertico rcirc-styles rubocopfmt consult-spotify consult orderless rust-mode git-link yasnippet markdown-mode deft org-brain origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
- '(pcomplete-ignore-case t)
+ '(pcomplete-ignore-case t t)
  '(rcirc-reconnect-delay 1)
  '(rcirc-server-alist
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :channels
