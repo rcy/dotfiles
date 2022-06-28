@@ -198,6 +198,7 @@
   (setq web-mode-content-types-alist
         '(("jsx" . "\\.js[x]?\\'")
           ("javascript" . "\\.mjs\\'")))
+  (setq web-mode-script-padding 2)
   (setq web-mode-comment-formats '(("javascript" . "//")
                                    ("jsx" . "//")
                                    ("typescript" . "//")
