@@ -343,3 +343,6 @@
 
 (use-package company
   :ensure t)
+
+(use-package wgrep
+  :ensure t)
