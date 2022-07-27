@@ -217,7 +217,7 @@
 ;;  :ensure t
   :init
   (global-set-key (kbd "C-c r") 'org-capture) ;;; remember
-  (global-set-key (kbd "C-c l") 'org-store-link)
+  (global-set-key (kbd "C-c L") 'org-store-link)
   :config
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "WAITING(w)" "DELEGATED(g)" "|" "DONE(d)" "CANCELLED(c)")))
@@ -300,7 +300,13 @@
   :ensure t)
 
 (use-package go-mode
-  :ensure t)
+  :ensure t
+  :init
+  (defun lsp-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'lsp-format-buffer t t)
+    (add-hook 'before-save-hook #'lsp-organize-imports t t))
+  (add-hook 'go-mode-hook #'lsp-deferred)
+  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks))
 
 (use-package dockerfile-mode
   :ensure t)
@@ -320,3 +326,20 @@
   (make-directory server-socket-dir t)
   (chmod server-socket-dir #o700)
   (ignore-errors (server-start)))
+
+(use-package lsp-mode
+  :ensure t
+  :defer t
+  ;; :hook (lsp-mode . (lambda ()
+  ;;                     (let ((lsp-keymap-prefix "C-c l"))
+  ;;                       (lsp-enable-which-key-integration))))
+  :init
+  :config
+  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
+
+(use-package lsp-ui
+  :ensure t
+  :defer t)
+
+(use-package company
+  :ensure t)
