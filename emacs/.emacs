@@ -347,3 +347,6 @@
 
 (use-package wgrep
   :ensure t)
+
+(use-package graphql-mode
+  :ensure t)
