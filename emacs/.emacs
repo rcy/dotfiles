@@ -227,14 +227,8 @@
   (setq org-directory "~/Dropbox/org")
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (setq org-capture-templates
-        `(("x" "Dynamic Inbox" entry (file ,(format "~/Dropbox/org/inbox.%s.org" system-name))
-           "\n* TODO [#A] %?")
-          ("i" "Inbox" entry (file+headline "~/Dropbox/org/inbox.org" "Inbox")
-           "* %?\n%i\n")
-	  ;; ("t" "Todo" entry (file+headline "~/Dropbox/org/gtd.org" "Tasks")
-          ;;  "* TODO %? %i\n")
-	  ("p" "Personal Project" entry (file+headline "~/Dropbox/org/personal.org" "Personal Projects")
-           "* %?")
+        `(("i" "Inbox" entry (file ,(format "~/Dropbox/org/inbox.%s.org" system-name))
+           "\n* REFILE %?")
           ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
            "* %<%H:%M>\n\n%?%i"
 	   :empty-lines 1
