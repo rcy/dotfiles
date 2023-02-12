@@ -26,7 +26,7 @@
               :from tags
               :left-join nodes
               :on (= tags:node-id nodes:id)
-              :where (like tag (quote "%\"agenda\"%"))]))))
+              :where (like tag (quote "%\"agenda\"%")) :or (like tag (quote "%\"force\"%"))]))))
 
 (defun rcy/roam-agenda-current-buffer-update-tag ()
   "Add or remove :agenda: filetag if incomplete todo entry in current buffer."
