@@ -204,6 +204,7 @@
                                    ("typescript" . "//")
                                    ("tsx" . "//")))
   (add-to-list 'auto-mode-alist '("\\.mjs\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.cjs\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.tsx?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
