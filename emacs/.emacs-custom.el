@@ -21,6 +21,7 @@
  '(menu-bar-mode nil)
  '(ns-command-modifier 'meta)
  '(org-adapt-indentation nil)
+ '(org-agenda-files nil)
  '(org-agenda-span 'day)
  '(org-archive-location ".archive.org::datetree/* From %s")
  '(org-cycle-global-at-bob t)
