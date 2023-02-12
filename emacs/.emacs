@@ -38,6 +38,7 @@
 (global-set-key (kbd "C-c i") 'rcy-insert-random-id)
 (global-set-key (kbd "C-c k") 'comment-region)
 (global-set-key (kbd "C-c o c") 'org-capture)
+(global-set-key (kbd "C-c o l") #'org-capture-goto-last-stored)
 (global-set-key (kbd "C-c q") 'quick-calc)
 (global-set-key (kbd "C-c n g") 'rcy/org-grep)
 
@@ -220,6 +221,37 @@
   :init
   (global-set-key (kbd "C-c r") 'org-capture) ;;; remember
   (global-set-key (kbd "C-c L") 'org-store-link)
+
+
+  ;; inspired by https://d12frosted.io/posts/2021-05-21-task-management-with-roam-vol7.html
+  (defun rcy-capture-meeting-template ()
+    (let ((person (read-from-minibuffer "Meeting with: ")))
+      (org-capture-put :meeting-person person)
+      (concat "* MEETING with "
+              person
+              " on [%<%Y-%m-%d %a>] :meeting:\n%U\n\n%?")))
+
+  (defun rcy-capture-meeting-target ()
+    (let ((person (org-capture-get :meeting-person)))
+      (rcy-get-or-create-meeting-file person)))
+
+  (defun rcy-get-or-create-meeting-file (person)
+    (let ((filename (concat
+                     "~/Dropbox/org/meetings/"
+                     (format-time-string "%Y-%m-%d-%H%M") "-" person
+                     ".org")))
+      (when (not (file-exists-p filename))
+        (save-excursion
+          (find-file-literally filename)
+          (org-with-point-at 1
+            (insert "#+TITLE: " (concat "Meetings: " person))
+            (org-id-get-create)
+            (save-buffer)
+            (kill-buffer))))
+      (set-buffer (org-capture-target-buffer filename))
+      (org-capture-put-target-region-and-position)
+      (widen)))
+
   :config
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "WAITING(w)" "DELEGATED(g)" "|" "DONE(d)" "CANCELLED(c)")))
@@ -229,6 +261,13 @@
   (setq org-capture-templates
         `(("i" "Inbox" entry (file ,(format "~/Dropbox/org/inbox.%s.org" system-name))
            "\n* REFILE %?")
+
+          ("m" "Meeting" entry
+           (function rcy-capture-meeting-target)
+           (function rcy-capture-meeting-template)
+           :empty-lines 1
+           :kill-buffer t)
+
           ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
            "* %<%H:%M>\n\n%?%i"
 	   :empty-lines 1

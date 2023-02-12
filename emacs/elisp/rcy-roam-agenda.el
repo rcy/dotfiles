@@ -42,6 +42,7 @@
 
 ;;(remove-hook 'find-file-hook #'rcy/roam-agenda-current-buffer-update-tag)
 (add-hook 'before-save-hook #'rcy/roam-agenda-current-buffer-update-tag)
+(add-hook 'org-capture-before-finalize-hook #'rcy/roam-agenda-current-buffer-update-tag)
 
 (defun rcy/roam-agenda-files-update (&rest _)
   "Update the value of `org-agenda-files'."
