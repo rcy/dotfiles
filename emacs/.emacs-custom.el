@@ -10,6 +10,7 @@
  '(auto-save-default nil)
  '(completion-ignore-case t t)
  '(custom-enabled-themes '(wombat))
+ '(dired-dwim-target 'dired-dwim-target-next)
  '(display-battery-mode t)
  '(display-time-mode t)
  '(enable-recursive-minibuffers t)
