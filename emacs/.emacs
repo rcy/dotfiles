@@ -248,6 +248,7 @@
 		    "  %?")
 	   :empty-lines 1
 	   )))
+   (setq org-agenda-todo-ignore-scheduled 'future)
   )
 
 (use-package rcirc
