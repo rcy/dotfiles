@@ -275,7 +275,9 @@
   :bind-keymap
   ("C-c p" . projectile-command-map))
 
-(use-package dired-x)
+(use-package dired-x
+  :init
+  (set-default 'dired-omit-mode t))
 
 (use-package deft
   :ensure t
