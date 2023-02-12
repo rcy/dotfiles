@@ -42,6 +42,10 @@
    '(("irc.libera.chat" :nick "rcy" :port 6697 :user-name "rcy" :channels
       ("#emb #rcirc #tasteslikeme #djfullmoon")
       :encryption tls)))
+ '(safe-local-variable-values
+   '((vc-prepare-patches-separately)
+     (diff-add-log-use-relative-names . t)
+     (vc-git-annotate-switches . "-w")))
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
