@@ -200,6 +200,7 @@
         '(("jsx" . "\\.js[x]?\\'")
           ("javascript" . "\\.mjs\\'")))
   (setq web-mode-script-padding 2)
+  (setq web-mode-code-indent-offset 2)
   (setq web-mode-comment-formats '(("javascript" . "//")
                                    ("jsx" . "//")
                                    ("typescript" . "//")
@@ -372,9 +373,13 @@
   ;; :hook (lsp-mode . (lambda ()
   ;;                     (let ((lsp-keymap-prefix "C-c l"))
   ;;                       (lsp-enable-which-key-integration))))
-  :init
   :config
-  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map))
+  (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
+
+  ;; make lsp look at web-mode-code-indent-offset, which it does not by default
+  (setf (alist-get 'web-mode lsp--formatting-indent-alist) 'web-mode-code-indent-offset)
+  :hook
+  (web-mode . lsp))
 
 (use-package lsp-ui
   :ensure t
