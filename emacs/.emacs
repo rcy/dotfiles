@@ -396,3 +396,7 @@
 
 (use-package flycheck
   :ensure t)
+
+(use-package treemacs
+  :ensure t)
+
