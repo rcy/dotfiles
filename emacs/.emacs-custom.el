@@ -35,7 +35,7 @@
      ("ignore" "someday")
      ""))
  '(package-selected-packages
-   '(flycheck wgrep dockerfile-mode docker-mode go-mode yaml projectilex org-roam dashboard vertico rcirc-styles rubocopfmt consult-spotify consult orderless rust-mode git-link yasnippet markdown-mode deft org-brain origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
+   '(treemacs flycheck wgrep dockerfile-mode docker-mode go-mode yaml projectilex org-roam dashboard vertico rcirc-styles rubocopfmt consult-spotify consult orderless rust-mode git-link yasnippet markdown-mode deft org-brain origami xterm-color graphql-mode org-drill web-mode nix-mode yaml-mode projectile magit use-package))
  '(pcomplete-ignore-case t t)
  '(rcirc-reconnect-attempts 300)
  '(rcirc-reconnect-delay 1)
