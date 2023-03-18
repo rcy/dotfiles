@@ -19,3 +19,5 @@ alias ns="nix-shell"
 alias pn="pndev"
 alias pnes="cd $HOME/DEV/PN/eternal-sledgehammer && nix-shell"
 alias pninf="cd $HOME/DEV/PN/infrastructure && nix-shell"
+
+alias pserve="python3 -m http.server"
