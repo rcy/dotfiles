@@ -405,3 +405,5 @@
 (use-package treemacs
   :ensure t)
 
+(use-package yasnippet
+  :ensure t)
