@@ -351,7 +351,8 @@
     (add-hook 'before-save-hook #'lsp-organize-imports t t))
   (add-hook 'go-mode-hook #'lsp-deferred)
   (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
-  (add-hook 'go-mode-hook (lambda () (setq tab-width 2))))
+  (add-hook 'go-mode-hook (lambda () (setq tab-width 8)))
+  (load-library "~/elisp/go-scratch.el"))
 
 (use-package dockerfile-mode
   :ensure t)
