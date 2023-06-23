@@ -2,12 +2,12 @@
   (interactive)
   (insert (format-time-string "%FT%T%z")))
 
-(defun rcy-insert-random-id ()
+(defun rcy-insert-random-id (chars)
   "Return a unique identifier, such as `DfzDKe5QBntWqW7ij`."
-  (interactive)
+  (interactive "p")
   (let* ((unmistakable-chars "23456789ABCDEFGHJKLMNPQRSTWXYZabcdefghijkmnopqrstuvwxyz")
          (len (length unmistakable-chars)))
-    (dotimes (i 17)
+    (dotimes (i chars)
       (insert (elt unmistakable-chars (random len))))))
 (global-set-key (kbd "C-c i") 'rcy-insert-random-id)
 
