@@ -10,10 +10,10 @@ packages=					\
 	tmux
 
 stow:
-	stow -S $(packages)
+	stow --verbose -S $(packages)
 
 unstow:
-	stow -D $(packages)
+	stow --verbose -D $(packages)
 
 cron:
 	-crontab -l > crontab.orig
