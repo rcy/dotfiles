@@ -62,7 +62,9 @@
      ("Google" .
       [simple-query "www.google.com" "www.google.com/search?q=" ""])
      ("Wikipedia" .
-      [simple-query "wikipedia.org" "wikipedia.org/wiki/" ""])))
+      [simple-query "wikipedia.org" "wikipedia.org/wiki/" ""])
+     ("http.cat" .
+      [simple-query "http.cat" "https://http.cat/status/" ""])))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
