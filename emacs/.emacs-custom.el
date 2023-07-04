@@ -64,7 +64,9 @@
      ("Wikipedia" .
       [simple-query "wikipedia.org" "wikipedia.org/wiki/" ""])
      ("http.cat" .
-      [simple-query "http.cat" "https://http.cat/status/" ""])))
+      [simple-query "http.cat" "https://http.cat/status/" ""])
+     ("rcy.sh" .
+      [simple-query "rcy.sh" "https://rcy.sh/" ""])))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
