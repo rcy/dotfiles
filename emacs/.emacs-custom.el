@@ -57,11 +57,7 @@
  '(web-mode-enable-engine-detection t)
  '(web-mode-markup-indent-offset 2)
  '(webjump-sites
-   '((#("JIRA (Pn)" 0 9
-        (face nil))
-      .
-      [simple-query "https://precisionnutrition.atlassian.net/jira/your-work" "https://precisionnutrition.atlassian.net/browse/" ""])
-     ("DuckDuckGo" .
+   '(("DuckDuckGo" .
       [simple-query "duckduckgo.com" "duckduckgo.com/?q=" ""])
      ("Google" .
       [simple-query "www.google.com" "www.google.com/search?q=" ""])
