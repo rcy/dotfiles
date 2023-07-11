@@ -22,3 +22,9 @@
 	helper = store
 [init]
 	defaultBranch = main
+[commit]
+        gpgsign = true
+[gpg]
+	format = ssh
+[user]
+	signingkey = /home/rcy/.ssh/id_rsa.pub
