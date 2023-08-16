@@ -74,6 +74,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "yellow"))))
+ '(fill-column-indicator ((t (:weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "black" :stipple nil :inherit shadow))))
  '(highlight ((t (:background "dark green" :foreground "white" :underline nil))))
  '(magit-diff-added ((((type tty)) (:foreground "green"))))
  '(magit-diff-added-highlight ((((type tty)) (:foreground "LimeGreen"))))

@@ -346,11 +346,21 @@
 (use-package go-mode
   :ensure t
   :init
-  (defun lsp-go-install-save-hooks ()
-    (add-hook 'before-save-hook #'lsp-format-buffer t t)
-    (add-hook 'before-save-hook #'lsp-organize-imports t t))
-  (add-hook 'go-mode-hook #'lsp-deferred)
-  (add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
+  ;; (defun lsp-go-install-save-hooks ()
+  ;;   (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  ;;   (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+  (defun rcy/eglot-go-install-save-hooks ()
+    (add-hook 'before-save-hook #'eglot-format-buffer t t)
+    (add-hook 'before-save-hook
+              (lambda () (call-interactively 'eglot-code-action-organize-imports))
+              t t))
+
+    ;;(add-hook 'before-save-hook #'eglot-code-action-organize-imports t t))
+
+  ;;(add-hook 'go-mode-hook #'lsp-deferred)
+  (add-hook 'go-mode-hook 'eglot-ensure)
+  (add-hook 'go-mode-hook #'rcy/eglot-go-install-save-hooks)
   (add-hook 'go-mode-hook (lambda () (setq tab-width 8)))
   (load-library "~/elisp/go-scratch.el"))
 
@@ -384,14 +394,17 @@
 
   ;; make lsp look at web-mode-code-indent-offset, which it does not by default
   (setf (alist-get 'web-mode lsp--formatting-indent-alist) 'web-mode-code-indent-offset)
-  :hook
-  (web-mode . lsp))
+  ;;:hook
+  ;;(web-mode . lsp)
+  )
 
 (use-package lsp-ui
   :ensure t
   :defer t)
 
 (use-package company
+  :config
+  (global-company-mode)
   :ensure t)
 
 (use-package wgrep
