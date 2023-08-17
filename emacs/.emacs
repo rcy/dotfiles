@@ -313,13 +313,6 @@
   :init
   (ffap-bindings))
 
-(use-package projectile
-  :ensure t
-  :init
-  (projectile-mode 1)
-  :bind-keymap
-  ("C-c p" . projectile-command-map))
-
 (use-package dired-x
   :init
   (set-default 'dired-omit-mode t))
