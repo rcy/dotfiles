@@ -1,7 +1,7 @@
 (defvar go-scratch-base-directory "~/src/go-scratch")
 (defun go-scratch ()
   (interactive)
-  (let ((dir (format "%s/%s" go-scratch-base-directory (format-time-string "%Y%m%d"))))
+  (let ((dir (format "%s/%s" go-scratch-base-directory (format-time-string "%Y%m%d-%H%M"))))
     (make-directory dir t)
     (find-file (file-name-concat dir "main.go"))
     (when (eq (point-min) (point-max))
