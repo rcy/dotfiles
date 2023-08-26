@@ -3,7 +3,7 @@ set -exu
 
 DIR=$(( find ~/personal ~/contrib -maxdepth 1 -mindepth 1 -type d; find ~/work -maxdepth 2 -mindepth 1 -type d; echo ~/dotfiles ) | fzf)
 
-NAME=$(basename $DIR)
+NAME=$(basename $DIR | tr . _)
 
 set +e
 tmux new-session -d -c $DIR -s $NAME
