@@ -220,6 +220,7 @@
   (add-to-list 'auto-mode-alist '("\\.html.erb\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.svelte\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.gohtml\\'" . web-mode))
   )
 
 (use-package org
