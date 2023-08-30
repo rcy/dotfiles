@@ -369,12 +369,12 @@
 (use-package git-link
   :ensure t)
 
-(use-package server
-  :ensure t
-  :init
-  (make-directory server-socket-dir t)
-  (chmod server-socket-dir #o700)
-  (ignore-errors (server-start)))
+;; (use-package server
+;;   :ensure t
+;;   :init
+;;   (make-directory server-socket-dir t)
+;;   (chmod server-socket-dir #o700)
+;;   (ignore-errors (server-start)))
 
 (use-package lsp-mode
   :ensure t
