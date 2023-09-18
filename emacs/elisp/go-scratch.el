@@ -1,4 +1,4 @@
-(defvar go-scratch-base-directory "~/src/go-scratch")
+(defvar go-scratch-base-directory "~/personal/go-scratch")
 (defun go-scratch ()
   (interactive)
   (let ((dir (format "%s/%s" go-scratch-base-directory (format-time-string "%Y%m%d-%H%M"))))
