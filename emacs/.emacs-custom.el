@@ -52,6 +52,7 @@
  '(tool-bar-mode nil)
  '(visible-bell t)
  '(web-mode-code-indent-offset 2)
+ '(web-mode-enable-auto-closing t)
  '(web-mode-enable-auto-quoting nil)
  '(web-mode-enable-comment-interpolation t)
  '(web-mode-enable-engine-detection t)
