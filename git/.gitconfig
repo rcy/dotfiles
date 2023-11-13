@@ -31,3 +31,5 @@
 	signingkey = /home/rcy/.ssh/id_rsa.pub
 [status]
 	showUntrackedFiles = all
+[github]
+	user = rcy
