@@ -10,6 +10,7 @@
         lol = log --pretty=oneline --graph --decorate
         lastweek  = log --since '7 days' --oneline --pretty=format:'%h %an - %s (%cr)' --committer='Ryan Yeske'
         yesterday = log --since '1 days' --oneline --pretty=format:'%h %an - %s (%cr)' --committer='Ryan Yeske'
+        recent = branch -v --sort=committerdate
 [push]
         default = simple
 [color]
