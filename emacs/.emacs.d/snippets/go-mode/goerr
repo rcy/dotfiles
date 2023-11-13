@@ -1,0 +1,6 @@
+# key: ge
+# name: goerr
+# --
+if err != nil {
+	$0return err
+}
