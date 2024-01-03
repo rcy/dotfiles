@@ -15,5 +15,12 @@ alias m="make -f Makefile.orig"
 # nix
 alias ns="nix-shell"
 
-
 alias pserve="python3 -m http.server"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+alias ........="cd ../../../../../../.."
