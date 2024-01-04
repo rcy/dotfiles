@@ -9,7 +9,6 @@
    ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
  '(auto-save-default nil)
  '(completion-ignore-case t t)
- '(custom-enabled-themes '(wombat))
  '(dired-dwim-target 'dired-dwim-target-next)
  '(display-battery-mode t)
  '(display-time-mode t)
