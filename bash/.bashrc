@@ -145,3 +145,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Added by serverless binary installer
 export PATH="$HOME/.serverless/bin:$PATH"
+
+export PATH=$HOME/go/bin:$PATH
