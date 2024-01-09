@@ -1,0 +1,7 @@
+# key: ew
+# name: go web handler error
+# --
+if err != nil {
+	$0http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+}
