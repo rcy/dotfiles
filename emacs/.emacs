@@ -399,9 +399,10 @@
 (use-package company
   :ensure t
   :config
+  (global-company-mode)
   (setq company-idle-delay 0)
   (setq company-selection-wrap-around t)
-  (company-tng-configure-default)
+  (company-tng-mode)
   )
 
 (use-package wgrep
