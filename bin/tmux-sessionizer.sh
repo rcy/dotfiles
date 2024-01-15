@@ -1,7 +1,7 @@
 #!/bin/bash
 set -exu
 
-DIR=$(( find ~/personal ~/contrib -maxdepth 1 -type d; find ~/work -maxdepth 2 -type d; echo ~/dotfiles ) | fzf)
+DIR=$(( find ~/personal ~/contrib -maxdepth 1 -type d; find ~/remote ~/work -maxdepth 2 -type d; echo ~/dotfiles ) | fzf)
 
 NAME=$(basename $DIR | tr . _)
 
