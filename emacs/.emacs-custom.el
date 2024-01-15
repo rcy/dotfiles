@@ -75,6 +75,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "yellow"))))
+ '(diff-refine-added ((t (:background "#005500" :inherit diff-refine-changed))))
+ '(diff-refine-removed ((t (:background "#440000" :inherit diff-refine-changed))))
  '(fill-column-indicator ((t (:weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "black" :stipple nil :inherit shadow))))
  '(highlight ((t (:background "dark green" :foreground "white" :underline nil))))
  '(line-number-current-line ((t (:inherit line-number :foreground "white"))))
