@@ -5,3 +5,4 @@ COMMIT_EDITMSG
 *,v
 .log
 *.sqlite3
+tmp
