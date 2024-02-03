@@ -74,17 +74,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "yellow"))))
- '(diff-refine-added ((t (:background "#005500" :inherit diff-refine-changed))))
- '(diff-refine-removed ((t (:background "#440000" :inherit diff-refine-changed))))
- '(fill-column-indicator ((t (:weight normal :slant normal :underline nil :overline nil :strike-through nil :box nil :inverse-video nil :foreground "black" :stipple nil :inherit shadow))))
- '(highlight ((t (:background "dark green" :foreground "white" :underline nil))))
- '(line-number-current-line ((t (:inherit line-number :foreground "white"))))
- '(magit-diff-added ((((type tty)) (:foreground "green"))))
- '(magit-diff-added-highlight ((((type tty)) (:foreground "LimeGreen"))))
- '(magit-diff-context-highlight ((((type tty)) (:foreground "default"))))
- '(magit-diff-file-heading ((((type tty)) nil)))
- '(magit-diff-removed ((((type tty)) (:foreground "red"))))
- '(magit-diff-removed-highlight ((((type tty)) (:foreground "IndianRed"))))
- '(magit-section-highlight ((((type tty)) nil)))
- '(region ((t (:extend t :background "#000077" :foreground "white")))))
+ '(line-number-current-line ((t (:inherit line-number :foreground "white")))))
