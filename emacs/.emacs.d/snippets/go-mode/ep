@@ -1,0 +1,7 @@
+# key: ep
+# name: goerr panic
+# --
+if err != nil {
+	panic(err)
+}
+$0
