@@ -124,6 +124,10 @@
          ("M-s l" . consult-line))                 ;; needed by consult-line to detect isearch
   )
 
+(use-package flymake
+  :init
+  (global-set-key (kbd "C-c p") 'flymake-show-project-diagnostics))
+
 (use-package orderless
   :ensure t
   :init
