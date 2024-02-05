@@ -13,6 +13,7 @@
  '(display-battery-mode t)
  '(display-line-numbers-type 'relative)
  '(display-time-mode t)
+ '(eglot-send-changes-idle-time 0)
  '(enable-recursive-minibuffers t)
  '(global-display-line-numbers-mode t)
  '(indent-tabs-mode nil)
