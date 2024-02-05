@@ -420,10 +420,10 @@
 (use-package yasnippet
   :ensure t)
 
-(use-package prog-mode
-  :hook
-  ((prog-mode . display-fill-column-indicator-mode)
-   (prog-mode . (lambda () (setq fill-column 100)))))
+;; (use-package prog-mode
+;;   :hook
+;;   ((prog-mode . display-fill-column-indicator-mode)
+;;    (prog-mode . (lambda () (setq fill-column 100)))))
 
 (use-package ansi-color
   :hook (compilation-filter . ansi-color-compilation-filter))
