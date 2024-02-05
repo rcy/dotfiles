@@ -11,6 +11,7 @@
  '(completion-ignore-case t t)
  '(dired-dwim-target 'dired-dwim-target-next)
  '(display-battery-mode t)
+ '(display-line-numbers-type 'relative)
  '(display-time-mode t)
  '(enable-recursive-minibuffers t)
  '(global-display-line-numbers-mode t)
