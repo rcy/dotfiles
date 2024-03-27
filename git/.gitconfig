@@ -28,7 +28,7 @@
 [gpg]
 	format = ssh
 [user]
-	signingkey = /home/rcy/.ssh/id_rsa.pub
+	signingkey = ~/.ssh/id_rsa.pub
 [status]
 	showUntrackedFiles = all
 [github]
