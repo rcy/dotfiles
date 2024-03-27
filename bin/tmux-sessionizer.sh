@@ -1,5 +1,5 @@
 #!/bin/bash
-set -exu
+set -eu
 
 DIR=$(( find ~/personal ~/contrib -maxdepth 1 -type d; find ~/remote ~/work -maxdepth 2 -type d; echo ~/dotfiles ) | fzf)
 
