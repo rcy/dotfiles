@@ -11,7 +11,7 @@
  '(completion-ignore-case t t)
  '(dired-dwim-target 'dired-dwim-target-next)
  '(display-battery-mode t)
- '(display-line-numbers-type 'relative)
+ '(display-line-numbers-type t)
  '(display-time-mode t)
  '(eglot-send-changes-idle-time 0)
  '(enable-recursive-minibuffers t)
