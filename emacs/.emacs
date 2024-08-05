@@ -340,26 +340,20 @@
 (use-package yaml-mode
   :ensure t)
 
-(use-package go-mode
+(use-package go-ts-mode
   :ensure t
   :init
-  ;; (defun lsp-go-install-save-hooks ()
-  ;;   (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  ;;   (add-hook 'before-save-hook #'lsp-organize-imports t t))
-
   (defun rcy/eglot-go-install-save-hooks ()
     (add-hook 'before-save-hook #'eglot-format-buffer t t)
     (add-hook 'before-save-hook
               (lambda () (call-interactively 'eglot-code-action-organize-imports))
               t t))
 
-    ;;(add-hook 'before-save-hook #'eglot-code-action-organize-imports t t))
-
-  ;;(add-hook 'go-mode-hook #'lsp-deferred)
-  (add-hook 'go-mode-hook 'eglot-ensure)
-  (add-hook 'go-mode-hook #'rcy/eglot-go-install-save-hooks)
-  (add-hook 'go-mode-hook (lambda () (setq tab-width 8)))
+  (add-hook 'go-ts-mode-hook 'eglot-ensure)
+  (add-hook 'go-ts-mode-hook #'rcy/eglot-go-install-save-hooks)
+  (add-hook 'go-ts-mode-hook (lambda () (setq tab-width 8)))
   (load-library "~/elisp/go-scratch.el"))
+(setq major-mode-remap-alist '((go-mode . go-ts-mode)))
 
 (use-package dockerfile-mode
   :ensure t)
@@ -451,3 +445,6 @@
 
 (when (treesit-language-available-p 'typescript)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode)))
+
+(use-package typescript-ts-mode
+  :hook (typescript-ts-mode-hook . eglot-ensure))

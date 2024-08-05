@@ -52,6 +52,7 @@
  '(scroll-bar-mode nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
+ '(treesit-font-lock-level 4)
  '(visible-bell t)
  '(web-mode-code-indent-offset 2)
  '(web-mode-enable-auto-closing t)
