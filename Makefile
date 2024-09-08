@@ -1,5 +1,6 @@
 packages=					\
 	bash					\
+	doom \
 	emacs					\
 	git					\
 	mail					\
