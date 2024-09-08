@@ -1,0 +1,7 @@
+# key: er
+# name: go web render handler error
+# --
+if err != nil {
+	render.Error(w, err, http.$0StatusInternalServerError, "")
+        return
+}
