@@ -10,8 +10,12 @@ packages=					\
 	ruby			                \
 	tmux
 
-stow:
+stow: pre
 	stow --verbose -S $(packages)
+
+.PHONY: pre
+pre:
+	mkdir -p ~/.emacs.d
 
 unstow:
 	stow --verbose -D $(packages)
