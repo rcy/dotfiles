@@ -151,11 +151,11 @@
   (make-directory (concat org-roam-directory "/daily") t)
   (setq org-roam-dailies-directory "daily/")
   (add-to-list 'display-buffer-alist
-             '("\\*org-roam\\*"
-               (display-buffer-in-direction)
-               (direction . right)
-               (window-width . 0.33)
-               (window-height . fit-window-to-buffer)))
+               '("\\*org-roam\\*"
+                 (display-buffer-in-direction)
+                 (direction . right)
+                 (window-width . 0.33)
+                 (window-height . fit-window-to-buffer)))
   (setq org-roam-capture-templates
         '(
           ;; default
@@ -227,7 +227,7 @@
   )
 
 (use-package org
-;;  :ensure t
+  ;;  :ensure t
   :init
   (global-set-key (kbd "C-c r") 'org-capture) ;;; remember
   (global-set-key (kbd "C-c L") 'org-store-link)
@@ -297,7 +297,7 @@
 		    "  %?")
 	   :empty-lines 1
 	   )))
-   (setq org-agenda-todo-ignore-scheduled 'future)
+  (setq org-agenda-todo-ignore-scheduled 'future)
   )
 
 (use-package rcirc
@@ -353,7 +353,7 @@
               (lambda () (call-interactively 'eglot-code-action-organize-imports))
               t t))
 
-    ;;(add-hook 'before-save-hook #'eglot-code-action-organize-imports t t))
+  ;;(add-hook 'before-save-hook #'eglot-code-action-organize-imports t t))
 
   ;;(add-hook 'go-mode-hook #'lsp-deferred)
   (add-hook 'go-mode-hook 'eglot-ensure)
@@ -433,21 +433,21 @@
 
 ;;; treesitter
 (setq treesit-language-source-alist
-   '((bash "https://github.com/tree-sitter/tree-sitter-bash")
-     (cmake "https://github.com/uyha/tree-sitter-cmake")
-     (css "https://github.com/tree-sitter/tree-sitter-css")
-     (elisp "https://github.com/Wilfred/tree-sitter-elisp")
-     (go "https://github.com/tree-sitter/tree-sitter-go")
-     (html "https://github.com/tree-sitter/tree-sitter-html")
-     (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
-     (json "https://github.com/tree-sitter/tree-sitter-json")
-     (make "https://github.com/alemuller/tree-sitter-make")
-     (markdown "https://github.com/ikatyang/tree-sitter-markdown")
-     (python "https://github.com/tree-sitter/tree-sitter-python")
-     (toml "https://github.com/tree-sitter/tree-sitter-toml")
-     (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
-     (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-     (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+      '((bash "https://github.com/tree-sitter/tree-sitter-bash")
+        (cmake "https://github.com/uyha/tree-sitter-cmake")
+        (css "https://github.com/tree-sitter/tree-sitter-css")
+        (elisp "https://github.com/Wilfred/tree-sitter-elisp")
+        (go "https://github.com/tree-sitter/tree-sitter-go")
+        (html "https://github.com/tree-sitter/tree-sitter-html")
+        (javascript "https://github.com/tree-sitter/tree-sitter-javascript" "master" "src")
+        (json "https://github.com/tree-sitter/tree-sitter-json")
+        (make "https://github.com/alemuller/tree-sitter-make")
+        (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+        (python "https://github.com/tree-sitter/tree-sitter-python")
+        (toml "https://github.com/tree-sitter/tree-sitter-toml")
+        (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+        (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+        (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
 (when (treesit-language-available-p 'typescript)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode)))

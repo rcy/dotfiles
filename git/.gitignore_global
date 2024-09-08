@@ -6,3 +6,4 @@ COMMIT_EDITMSG
 .log
 *.sqlite3
 tmp
+main
