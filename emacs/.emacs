@@ -205,6 +205,8 @@
 (use-package web-mode
   :ensure t
   :init
+  (setq web-mode-engines-alist
+        '(("go" . "\\.html\\'")))
   (setq web-mode-content-types-alist
         '(("jsx" . "\\.js[x]?\\'")
           ("javascript" . "\\.mjs\\'")))
