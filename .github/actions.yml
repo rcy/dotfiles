@@ -1,0 +1,7 @@
+name: Emacs
+on: [push]
+jobs:
+  Load-Emacs:
+    runs-on: ubuntu-latest
+    steps:
+      -run: echo hello world
