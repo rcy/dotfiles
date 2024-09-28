@@ -69,7 +69,9 @@
      ("http.cat" .
       [simple-query "http.cat" "https://http.cat/status/" ""])
      ("rcy.sh" .
-      [simple-query "rcy.sh" "https://rcy.sh/" ""])))
+      [simple-query "rcy.sh" "https://rcy.sh/" ""])
+     ("github projects" .
+      [simple-query "https://github.com/rcy?tab=projects" "https://github.com/users/rcy/projects/" ""])))
  '(yas-global-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
