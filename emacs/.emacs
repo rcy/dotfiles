@@ -41,6 +41,7 @@
 (global-set-key (kbd "C-c o l") #'org-capture-goto-last-stored)
 (global-set-key (kbd "C-c q") 'quick-calc)
 (global-set-key (kbd "C-c n g") 'rcy/org-grep)
+(global-set-key (kbd "C-c j") 'webjump)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; misc config
@@ -50,10 +51,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(use-package jira-at-point
-  :load-path "~/elisp"
-  :bind (("C-c j" . rcy/browse-jira-issue-at-point)))
-
 (use-package rcy-roam-agenda
   :demand
   :after org-roam
