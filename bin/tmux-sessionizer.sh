@@ -11,7 +11,7 @@ RESULT=$?
 set -e
 if [ $RESULT -eq 0 ]; then
     if [ -e $DIR/shell.nix ]; then
-        tmux send-keys -t $NAME 'nix-shell' C-m
+        tmux send-keys -t $NAME 'cached-nix-shell' C-m
     fi
 fi
 tmux switch-client -t $NAME

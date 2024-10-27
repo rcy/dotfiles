@@ -1,0 +1,19 @@
+# -*- mode: snippet -*-
+# name: queries transaction
+# key: qtx
+# --
+	tx, err := s.pool.Begin(ctx)
+	if err != nil {
+		render.Error(w, err, http.StatusInternalServerError, "")
+		return
+	}
+	defer tx.Rollback(ctx)
+	qtx := s.queries.WithTx(tx)
+
+        $0
+
+	err = tx.Commit(ctx)
+	if err != nil {
+		render.Error(w, err, http.StatusInternalServerError, "")
+		return
+	}

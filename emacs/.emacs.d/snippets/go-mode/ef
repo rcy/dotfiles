@@ -1,0 +1,7 @@
+# key: ef
+# name: goerr log fatal
+# --
+if err != nil {
+	log.Fatal(err)
+}
+$0
