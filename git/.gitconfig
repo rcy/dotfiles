@@ -6,6 +6,8 @@
 [core]
 	excludesfile = ~/.gitignore_global
         pager = cat
+        hooksPath = ~/gitconfig/hooks
+
 [alias]
         lol = log --pretty=oneline --graph --decorate
         lastweek  = log --since '7 days' --oneline --pretty=format:'%h %an - %s (%cr)' --committer='Ryan Yeske'
