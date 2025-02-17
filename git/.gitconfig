@@ -30,7 +30,7 @@
 [gpg]
 	format = ssh
 [user]
-	signingkey = ~/.ssh/id_rsa.pub
+	signingkey = ~/.ssh/id_ed25519.pub
 [status]
 	showUntrackedFiles = all
 [github]

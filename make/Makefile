@@ -20,10 +20,10 @@ install-home-manager:
 	nix-channel --update
 	nix-shell '<home-manager>' -A install
 
-.ssh/id_rsa.pub .ssh/id_rsa:
-	ssh-keygen
+.ssh/id_ed25519.pub:
+	ssh-keygen -t ed25519
 
-ssh: .ssh/id_rsa.pub
+ssh: .ssh/id_ed25519.pub
 	cat $<
 	@echo https://github.com/settings/ssh/new
 	@echo https://gitlab.com/-/profile/keys
