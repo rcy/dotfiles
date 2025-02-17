@@ -28,6 +28,10 @@ ssh: .ssh/id_ed25519.pub
 	@echo https://github.com/settings/ssh/new
 	@echo https://gitlab.com/-/profile/keys
 
+.ssh/allowed_signers: .ssh/id_ed25519.pub
+	echo "$$(whoami) $$(cat $<)" >> $@
+	chmod 600 $@
+
 wifi: wifi-list wifi-connect
 wifi-list:
 	nmcli device wifi list

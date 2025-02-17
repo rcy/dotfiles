@@ -35,3 +35,5 @@
 	showUntrackedFiles = all
 [github]
 	user = rcy
+[gpg "ssh"]
+	allowedSignersFile = /home/rcy/.ssh/allowed_signers
