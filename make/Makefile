@@ -26,7 +26,7 @@ install-home-manager:
 ssh: .ssh/id_ed25519.pub
 	cat $<
 	@echo https://github.com/settings/ssh/new
-	@echo https://gitlab.com/-/profile/keys
+	@echo https://gitlab.com/-/user_settings/ssh_keys
 
 .ssh/allowed_signers: .ssh/id_ed25519.pub
 	echo "$$(whoami) $$(cat $<)" >> $@
