@@ -1,0 +1,2 @@
+(set-frame-font ":pixelsize=16")
+(load-theme 'deeper-blue)

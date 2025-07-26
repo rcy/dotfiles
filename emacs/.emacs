@@ -57,7 +57,9 @@
   :load-path "~/elisp")
 
 (use-package rcy-util
-  :load-path "~/elisp")
+  :load-path "~/elisp"
+  :init
+  (global-set-key (kbd "C-c x") 'rcy-println-debug))
 
 (use-package vertico
   :ensure t
@@ -138,66 +140,92 @@
   :init
   (savehist-mode))
 
-(use-package org-roam
+(use-package denote
   :ensure t
-  :after org
-  :init
-  (setq org-roam-v2-ack t)
-  (make-directory "~/Dropbox/org" t)
-  (setq org-roam-directory (file-truename "~/Dropbox/org")) ;; FIXME
-  (make-directory (concat org-roam-directory "/daily") t)
-  (setq org-roam-dailies-directory "daily/")
-  (add-to-list 'display-buffer-alist
-               '("\\*org-roam\\*"
-                 (display-buffer-in-direction)
-                 (direction . right)
-                 (window-width . 0.33)
-                 (window-height . fit-window-to-buffer)))
-  (setq org-roam-capture-templates
-        '(
-          ;; default
-          ("d" "default" plain "%?"
-           :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
-"))
-          ;; project
-          ("p" "project" plain "
-* ${title}
-%?"
-           :target (file+head "projects/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
-#+filetags: :project:
-")
-           :empty-lines-before 1
-           :unnarrowed t)
-          ))
-  (setq org-roam-dailies-capture-templates
-        '(
-          ("d" "default" entry "* TODO [#A] %?" :target
-           (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
-"))
-          ;;         ("i" "daily inbox" entry "* %?" :target
-          ;;          (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
-          ;; " ("TODO [#A] INBOX")))
-          ))
-  :config
-  (org-roam-db-autosync-mode)
   :bind (
-         ("C-c n c" . org-roam-capture)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n b" . org-roam-buffer-toggle)
+         ("C-c n n" . denote)
+         ("C-c n f" . denote-open-or-create)
+         ("C-c n c" . denote-region) ; "contents" mnemonic
+         ("C-c n N" . denote-type)
+         ("C-c n d" . denote-date)
+         ("C-c n z" . denote-signature) ; "zettelkasten" mnemonic
+         ("C-c n s" . denote-subdirectory)
+         ("C-c n t" . denote-template)
+         ;; If you intend to use Denote with a variety of file types, it is
+         ;; easier to bind the link-related commands to the `global-map', as
+         ;; shown here.  Otherwise follow the same pattern for `org-mode-map',
+         ;; `markdown-mode-map', and/or `text-mode-map'.
+         ("C-c n i". denote-link) ; "insert" mnemonic
+         ("C-c n I". denote-add-links)
+         ("C-c n b". denote-backlinks)
+         ;;       (define-key map (kbd "C-c n f f") #'denote-find-link)
+         ;;       (define-key map (kbd "C-c n f b") #'denote-find-backlink)
+         ;; Note that `denote-rename-file' can work from any context, not just
+         ;; Dired bufffers.  That is why we bind it here to the `global-map'.
+         ("C-c n r". denote-rename-file)
+         ("C-c n R". denote-rename-file-using-front-matter)))
 
-         ("C-c n d ." . org-roam-dailies-goto-today)
-         ("C-c n d d" . org-roam-dailies-goto-date)
-         ("C-c n d <" . org-roam-dailies-goto-yesterday)
-         ("C-c n d >" . org-roam-dailies-goto-tomorrow)
-         ("C-c n d c" . org-roam-dailies-capture-date)
 
-         ("C-c n t a" . org-roam-tag-add)
-         ("C-c n t r" . org-roam-tag-remove)
+;; (use-package org-roam
+;;   :ensure t
+;;   :after org
+;;   :init
+;;   (setq org-roam-v2-ack t)
+;;   (make-directory "~/Dropbox/org" t)
+;;   (setq org-roam-directory (file-truename "~/Dropbox/org")) ;; FIXME
+;;   (make-directory (concat org-roam-directory "/daily") t)
+;;   (setq org-roam-dailies-directory "daily/")
+;;   (add-to-list 'display-buffer-alist
+;;                '("\\*org-roam\\*"
+;;                  (display-buffer-in-direction)
+;;                  (direction . right)
+;;                  (window-width . 0.33)
+;;                  (window-height . fit-window-to-buffer)))
+;;   (setq org-roam-capture-templates
+;;         '(
+;;           ;; default
+;;           ("d" "default" plain "%?"
+;;            :target (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
+;; "))
+;;           ;; project
+;;           ("p" "project" plain "
+;; * ${title}
+;; %?"
+;;            :target (file+head "projects/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}
+;; #+filetags: :project:
+;; ")
+;;            :empty-lines-before 1
+;;            :unnarrowed t)
+;;           ))
+;;   (setq org-roam-dailies-capture-templates
+;;         '(
+;;           ("d" "default" entry "* TODO [#A] %?" :target
+;;            (file+head "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
+;; "))
+;;           ;;         ("i" "daily inbox" entry "* %?" :target
+;;           ;;          (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y-%m-%d>
+;;           ;; " ("TODO [#A] INBOX")))
+;;           ))
+;;   :config
+;;   (org-roam-db-autosync-mode)
+;;   :bind (
+;;          ("C-c n c" . org-roam-capture)
+;;          ("C-c n f" . org-roam-node-find)
+;;          ("C-c n i" . org-roam-node-insert)
+;;          ("C-c n b" . org-roam-buffer-toggle)
 
-         ("C-c n ." . org-roam-dailies-capture-today)
-         )
-  )
+;;          ("C-c n d ." . org-roam-dailies-goto-today)
+;;          ("C-c n d d" . org-roam-dailies-goto-date)
+;;          ("C-c n d <" . org-roam-dailies-goto-yesterday)
+;;          ("C-c n d >" . org-roam-dailies-goto-tomorrow)
+;;          ("C-c n d c" . org-roam-dailies-capture-date)
+
+;;          ("C-c n t a" . org-roam-tag-add)
+;;          ("C-c n t r" . org-roam-tag-remove)
+
+;;          ("C-c n ." . org-roam-dailies-capture-today)
+;;          )
+;;   )
 
 (use-package web-mode
   :ensure t
@@ -214,6 +242,7 @@
                                    ("typescript" . "//")
                                    ("tsx" . "//")))
   (add-to-list 'auto-mode-alist '("\\.mjs\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode))
   (add-to-list 'auto-mode-alist '("\\.cjs\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
@@ -334,7 +363,14 @@
   (add-hook 'comint-output-filter-functions 'comint-truncate-buffer))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :init
+
+  (defun rcy/quick-worktree (branch)
+    (interactive "sNew branch name: ")
+    (magit-status "~/work/West/platform.main")
+    (let ((path (format "~/work/West/platform.%s" branch)))
+      (magit-worktree-branch path branch "origin/main"))))
 
 (use-package yaml-mode
   :ensure t)
@@ -379,19 +415,31 @@
 ;;   (chmod server-socket-dir #o700)
 ;;   (ignore-errors (server-start)))
 
+(use-package prettier-js
+  :ensure t
+  :config
+  (setq prettier-js-show-errors nil)
+  (defun enable-prettier-on-save ()
+    "Run prettier on save if .prettierrc exists in project."
+    (interactive)
+    (when (locate-dominating-file default-directory ".prettierrc")
+      (add-hook 'before-save-hook 'prettier-js nil 'local))))
+
+
 (use-package lsp-mode
   :ensure t
   :defer t
   ;; :hook (lsp-mode . (lambda ()
   ;;                     (let ((lsp-keymap-prefix "C-c l"))
   ;;                       (lsp-enable-which-key-integration))))
+  :hook ((typescript-ts-mode . lsp)
+         (web-mode . lsp))
   :config
   (define-key lsp-mode-map (kbd "C-c l") lsp-command-map)
 
   ;; make lsp look at web-mode-code-indent-offset, which it does not by default
   (setf (alist-get 'web-mode lsp--formatting-indent-alist) 'web-mode-code-indent-offset)
-  ;;:hook
-  ;;(web-mode . lsp)
+  (setq lsp-typescript-format-enable t)
   )
 
 (use-package lsp-ui
@@ -407,6 +455,10 @@
   (company-tng-mode)
   )
 
+;; company-box helps with copilot/company coexisting
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (use-package wgrep
   :ensure t)
 
@@ -419,8 +471,8 @@
 (use-package treemacs
   :ensure t)
 
-(use-package yasnippet
-  :ensure t)
+;; (use-package yasnippet
+;;   :ensure t)
 
 ;; (use-package prog-mode
 ;;   :hook
@@ -450,3 +502,11 @@
 
 (when (treesit-language-available-p 'typescript)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode)))
+
+(use-package copilot
+  :bind (:map copilot-completion-map
+              ("C-<return>" . copilot-accept-completion)
+              ("C-<tab>" . copilot-accept-completion-by-word)
+              ("C-<backspace>" . copilot-clear-overlay))
+  :init
+  (setq copilot-indent-offset-warning-disable t))

@@ -48,4 +48,18 @@
   (grep-compute-defaults)
   (rgrep regexp "*.org" org-directory))
 
+(defvar rcy-println-debug-count 0)
+
+(defun rcy-println-debug ()
+  (interactive)
+
+  (beginning-of-line)
+  (open-line 1)
+  (indent-for-tab-command)
+  (insert "fmt.Println(\"DEBUGX ")
+  (rcy-insert-random-id 4)
+  (insert (format " %d" rcy-println-debug-count))
+  (insert "\")")
+  (setq rcy-println-debug-count (1+ rcy-println-debug-count)))
+
 (provide 'rcy-util)
