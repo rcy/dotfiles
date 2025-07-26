@@ -11,8 +11,10 @@
 [alias]
         lol = log --pretty=oneline --graph --decorate
         lastweek  = log --since '7 days' --oneline --pretty=format:'%h %an - %s (%cr)' --committer='Ryan Yeske'
+        lastweekall  = log --since '7 days' --oneline --pretty=format:'%h %an - %s (%cr)'
         yesterday = log --since '1 days' --oneline --pretty=format:'%h %an - %s (%cr)' --committer='Ryan Yeske'
-        recent = branch -v --sort=committerdate
+        #recent = branch -v --sort=committerdate
+        recent = for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) - %(refname:short) - %(authorname) - %(contents:subject)'
 [push]
         default = simple
 [color]
