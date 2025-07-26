@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: gom
+# key: gom
+# --
+	. "maragu.dev/gomponents"
+	hx "maragu.dev/gomponents-htmx"
+	. "maragu.dev/gomponents/html"

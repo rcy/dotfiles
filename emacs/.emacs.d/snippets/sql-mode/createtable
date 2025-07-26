@@ -1,0 +1,13 @@
+# key: createtable
+# name: createtable
+# expand-env: ((yas-indent-line 'fixed))
+# --
+create table ${1:table_name} (
+    id uuid primary key default gen_random_uuid(),
+    created_at timestamptz not null default now(),
+    updated_at timestamptz not null default now(),
+
+    user_id uuid not null references users
+);
+
+create trigger update_${1}_timestamp before update on ${1} for each row execute procedure update_timestamp();

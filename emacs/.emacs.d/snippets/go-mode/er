@@ -2,6 +2,6 @@
 # name: go web render handler error
 # --
 if err != nil {
-	render.Error(w, err, http.$0StatusInternalServerError, "")
+	render.Error(w, r, err, http.$0StatusInternalServerError, "")
         return
 }

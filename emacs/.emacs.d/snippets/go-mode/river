@@ -1,0 +1,44 @@
+# -*- mode: snippet -*-
+# name: river
+# key: river
+# --
+package gcal
+
+import (
+	"context"
+	"goapi/generated/db"
+
+	"github.com/google/uuid"
+	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgxpool"
+	"github.com/riverqueue/river"
+)
+
+type ${1:name}Args struct {
+	GoogleProfileID uuid.UUID
+	SyncToken       string
+}
+
+func (${1}Args) Kind() string { return "${1}" }
+
+type ${1}Worker struct {
+	river.WorkerDefaults[${1}Args]
+	Pool    *pgxpool.Pool
+	Queries *db.Queries
+}
+
+func (w *${1}Worker) Work(ctx context.Context, job *river.Job[${1}Args]) error {
+	riverClient := river.ClientFromContext[pgx.Tx](ctx)
+
+	tx, err := w.Pool.Begin(ctx)
+	if err != nil {
+		return err
+	}
+	defer tx.Rollback(ctx)
+
+	qtx := w.Queries.WithTx(tx)
+
+	// work
+
+	return tx.Commit(ctx)
+}

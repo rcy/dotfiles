@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: act
+# key: act
+# --
+err = activities.Create(ctx, qtx, activities.CreateParams{
+        UserID: user.ID,
+        Action: activities.${1:action},
+        Metadata: activities.Metadata{},
+})
+if err != nil {
+        render.Error(w, fmt.Errorf("activities.Create: %w", err), http.StatusInternalServerError, "")
+        return
+}
