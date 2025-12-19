@@ -47,9 +47,7 @@ mail:
 	notmuch new
 
 headphones:
-	 (echo connect 00:16:94:1E:55:28 && cat) | bluetoothctl
-
-headphones.force: restart-pulse-audio headphones
+	cat /proc/asound/card*/codec*
 
 restart-pulse-audio:
 	-pulseaudio --kill
