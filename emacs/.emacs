@@ -456,8 +456,8 @@
   )
 
 ;; company-box helps with copilot/company coexisting
-(use-package company-box
-  :hook (company-mode . company-box-mode))
+;;(use-package company-box
+;;  :hook (company-mode . company-box-mode))
 
 (use-package wgrep
   :ensure t)
@@ -471,8 +471,8 @@
 (use-package treemacs
   :ensure t)
 
-;; (use-package yasnippet
-;;   :ensure t)
+(use-package yasnippet
+  :ensure t)
 
 ;; (use-package prog-mode
 ;;   :hook

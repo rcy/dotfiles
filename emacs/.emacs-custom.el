@@ -39,10 +39,10 @@
      ("WAITING" "TODO" "NEXT" "DELEGATED" "CANCELLED")
      ("ignore" "someday") ""))
  '(package-selected-packages
-   '(company company-box consult copilot deft denote dockerfile-mode
-             flycheck git-link go-mode graphql-mode lsp-ui magit
-             nix-mode ob-mermaid orderless org-roam prettier-js
-             treemacs vertico web-mode wgrep yaml-mode yasnippet))
+   '(company consult deft denote dockerfile-mode flycheck git-link
+             go-mode graphql-mode lsp-ui magit nix-mode orderless
+             prettier-js treemacs vertico web-mode wgrep yaml-mode
+             yasnippet))
  '(pcomplete-ignore-case t t)
  '(prettier-js-args '("prettier"))
  '(prettier-js-command "npx")
