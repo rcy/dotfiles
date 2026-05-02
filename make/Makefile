@@ -78,3 +78,6 @@ mlbv-tor-vpn:
 # https://github.com/tailscale/tailscale/issues/8223#issuecomment-1871678581
 dns:
 	sudo systemctl restart tailscaled systemd-resolved
+
+camp:
+	~/dotfiles/bin/campsnap-sync.sh
