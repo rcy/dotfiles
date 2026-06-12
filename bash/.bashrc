@@ -148,3 +148,8 @@ export PATH="$HOME/.serverless/bin:$PATH"
 
 export PATH=$HOME/go/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
