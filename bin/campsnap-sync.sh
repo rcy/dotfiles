@@ -3,7 +3,7 @@
 set -eu
 
 now=$(date +%Y%m%d_%H%M%S)
-dest="$HOME/Dropbox/CampSnap/${now}"
+dest="$HOME/Dropbox/CampSnap/$(date +%Y)"
 
 find /media/rcy/CampSnap/DCIM -type f | while read -r f; do
     mkdir -p "$dest"
