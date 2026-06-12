@@ -38,11 +38,7 @@
    '("+project-someday/-DONE"
      ("WAITING" "TODO" "NEXT" "DELEGATED" "CANCELLED")
      ("ignore" "someday") ""))
- '(package-selected-packages
-   '(company consult deft denote dockerfile-mode flycheck git-link
-             go-mode graphql-mode lsp-ui magit nix-mode orderless
-             prettier-js treemacs vertico web-mode wgrep yaml-mode
-             yasnippet))
+ '(package-selected-packages nil)
  '(pcomplete-ignore-case t t)
  '(prettier-js-args '("prettier"))
  '(prettier-js-command "npx")
