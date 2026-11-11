@@ -503,10 +503,59 @@
 (when (treesit-language-available-p 'typescript)
   (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-ts-mode)))
 
-(use-package copilot
-  :bind (:map copilot-completion-map
-              ("C-<return>" . copilot-accept-completion)
-              ("C-<tab>" . copilot-accept-completion-by-word)
-              ("C-<backspace>" . copilot-clear-overlay))
+;; (use-package copilot
+;;   :bind (:map copilot-completion-map
+;;               ("C-<return>" . copilot-accept-completion)
+;;               ("C-<tab>" . copilot-accept-completion-by-word)
+;;               ("C-<backspace>" . copilot-clear-overlay))
+;;   :init
+;;   (setq copilot-indent-offset-warning-disable t))
+
+;; minuet: LLM inline completion (https://github.com/milanglacier/minuet-ai.el)
+;; Manually triggered so it doesn't compete with copilot's auto overlay.
+;; Requires ANTHROPIC_API_KEY in Emacs's environment.
+(use-package minuet
+  :ensure t
+  :bind (("M-i" . minuet-show-suggestion)
+         :map minuet-active-mode-map
+         ("C-M-p" . minuet-previous-suggestion)
+         ("C-M-n" . minuet-next-suggestion)
+         ("M-A" . minuet-accept-suggestion)
+         ("M-a" . minuet-accept-suggestion-line)
+         ("M-e" . minuet-dismiss-suggestion))
   :init
-  (setq copilot-indent-offset-warning-disable t))
+  (setq minuet-provider 'claude)
+  :config
+  (plist-put minuet-claude-options :model "claude-sonnet-5-5")
+  (plist-put minuet-claude-options :api-key "ANTHROPIC_API_KEY")
+  (minuet-set-optional-options minuet-claude-options :max_tokens 256)
+  (minuet-set-optional-options minuet-claude-options :thinking '(:type "between_tools"))
+  (setq minuet-request-timeout 8
+        minuet-show-error-message-on-minibuffer t)
+
+  ;; Progress feedback after M-i: show "waiting" while requests are in flight,
+  ;; then report if nothing came back (see *minuet* buffer for timeout/errors).
+  ;; (defun rcy/minuet-watch-request (&rest _)
+  ;;   (let ((buf (current-buffer))
+  ;;         (start (float-time))
+  ;;         timer)
+  ;;     (message "Minuet: waiting...")
+  ;;     (setq timer
+  ;;           (run-with-timer
+  ;;            0.2 0.2
+  ;;            (lambda ()
+  ;;              (if (not (buffer-live-p buf))
+  ;;                  (cancel-timer timer)
+  ;;                (with-current-buffer buf
+  ;;                  (cond
+  ;;                   ;; a suggestion showed up
+  ;;                   (minuet--current-overlay
+  ;;                    (cancel-timer timer)
+  ;;                    (message "Minuet: done (%.1fs)" (- (float-time) start)))
+  ;;                   ;; requests finished (or were cancelled) with no suggestion
+  ;;                   ((not (seq-some #'process-live-p minuet--current-requests))
+  ;;                    (cancel-timer timer)
+  ;;                    (message "Minuet: no suggestion (%.1fs)" (- (float-time) start)))
+  ;;                   (t (message "Minuet: waiting... %.1fs" (- (float-time) start)))))))))))
+  ;; (advice-add 'minuet-show-suggestion :after #'rcy/minuet-watch-request)
+  )
