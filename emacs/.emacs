@@ -456,7 +456,7 @@
   )
 
 ;; company-box helps with copilot/company coexisting
-;;(use-package company-box
+;; (use-package company-box
 ;;  :hook (company-mode . company-box-mode))
 
 (use-package wgrep
@@ -511,25 +511,38 @@
 ;;   :init
 ;;   (setq copilot-indent-offset-warning-disable t))
 
+(use-package copilot
+  :ensure t
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("C-<return>" . copilot-accept-completion)
+              ("C-<backspace>" . copilot-clear-overlay)
+              ("C-<tab>" . copilot-accept-completion-by-word)
+              ("C-TAB" . copilot-accept-completion-by-word)
+              ("C-M-n" . copilot-next-completion)
+              ("C-M-p" . copilot-previous-completion))
+  :init
+  (setq copilot-indent-offset-warning-disable t))
+
 ;; minuet: LLM inline completion (https://github.com/milanglacier/minuet-ai.el)
 ;; Manually triggered so it doesn't compete with copilot's auto overlay.
 ;; Requires ANTHROPIC_API_KEY in Emacs's environment.
-(use-package minuet
-  :ensure t
-  :bind (("M-i" . minuet-complete-with-minibuffer)
-         :map minuet-active-mode-map
-         ("C-M-p" . minuet-previous-suggestion)
-         ("C-M-n" . minuet-next-suggestion)
-         ("M-A" . minuet-accept-suggestion)
-         ("M-a" . minuet-accept-suggestion-line)
-         ("M-e" . minuet-dismiss-suggestion))
-  :init
-  (setq minuet-provider 'claude)
-  :config
-  (plist-put minuet-claude-options :model "claude-haiku-5-5")
-  (plist-put minuet-claude-options :api-key "ANTHROPIC_API_KEY")
-  (minuet-set-optional-options minuet-claude-options :max_tokens 256)
-  (minuet-set-optional-options minuet-claude-options :thinking '(:type "disabled"))
-  (setq minuet-request-timeout 8
-        minuet-show-error-message-on-minibuffer t)
-  )
+;; (use-package minuet
+;;   :ensure t
+;;   :bind (("M-i" . minuet-complete-with-minibuffer)
+;;          :map minuet-active-mode-map
+;;          ("C-M-p" . minuet-previous-suggestion)
+;;          ("C-M-n" . minuet-next-suggestion)
+;;          ("M-A" . minuet-accept-suggestion)
+;;          ("M-a" . minuet-accept-suggestion-line)
+;;          ("M-e" . minuet-dismiss-suggestion))
+;;   :init
+;;   (setq minuet-provider 'claude)
+;;   :config
+;;   (plist-put minuet-claude-options :model "claude-haiku-5-5")
+;;   (plist-put minuet-claude-options :api-key "ANTHROPIC_API_KEY")
+;;   (minuet-set-optional-options minuet-claude-options :max_tokens 256)
+;;   (minuet-set-optional-options minuet-claude-options :thinking '(:type "disabled"))
+;;   (setq minuet-request-timeout 8
+;;         minuet-show-error-message-on-minibuffer t)
+;;   )
