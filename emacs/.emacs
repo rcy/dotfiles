@@ -516,7 +516,7 @@
 ;; Requires ANTHROPIC_API_KEY in Emacs's environment.
 (use-package minuet
   :ensure t
-  :bind (("M-i" . minuet-show-suggestion)
+  :bind (("M-i" . minuet-complete-with-minibuffer)
          :map minuet-active-mode-map
          ("C-M-p" . minuet-previous-suggestion)
          ("C-M-n" . minuet-next-suggestion)
@@ -526,36 +526,10 @@
   :init
   (setq minuet-provider 'claude)
   :config
-  (plist-put minuet-claude-options :model "claude-sonnet-5-5")
+  (plist-put minuet-claude-options :model "claude-haiku-5-5")
   (plist-put minuet-claude-options :api-key "ANTHROPIC_API_KEY")
   (minuet-set-optional-options minuet-claude-options :max_tokens 256)
-  (minuet-set-optional-options minuet-claude-options :thinking '(:type "between_tools"))
+  (minuet-set-optional-options minuet-claude-options :thinking '(:type "disabled"))
   (setq minuet-request-timeout 8
         minuet-show-error-message-on-minibuffer t)
-
-  ;; Progress feedback after M-i: show "waiting" while requests are in flight,
-  ;; then report if nothing came back (see *minuet* buffer for timeout/errors).
-  ;; (defun rcy/minuet-watch-request (&rest _)
-  ;;   (let ((buf (current-buffer))
-  ;;         (start (float-time))
-  ;;         timer)
-  ;;     (message "Minuet: waiting...")
-  ;;     (setq timer
-  ;;           (run-with-timer
-  ;;            0.2 0.2
-  ;;            (lambda ()
-  ;;              (if (not (buffer-live-p buf))
-  ;;                  (cancel-timer timer)
-  ;;                (with-current-buffer buf
-  ;;                  (cond
-  ;;                   ;; a suggestion showed up
-  ;;                   (minuet--current-overlay
-  ;;                    (cancel-timer timer)
-  ;;                    (message "Minuet: done (%.1fs)" (- (float-time) start)))
-  ;;                   ;; requests finished (or were cancelled) with no suggestion
-  ;;                   ((not (seq-some #'process-live-p minuet--current-requests))
-  ;;                    (cancel-timer timer)
-  ;;                    (message "Minuet: no suggestion (%.1fs)" (- (float-time) start)))
-  ;;                   (t (message "Minuet: waiting... %.1fs" (- (float-time) start)))))))))))
-  ;; (advice-add 'minuet-show-suggestion :after #'rcy/minuet-watch-request)
   )
