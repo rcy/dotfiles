@@ -1,2 +1,4 @@
-(set-frame-font ":pixelsize=22")
+(set-frame-font ":pixelsize=20")
 (load-theme 'wombat)
+
+(set-cursor-color "yellow")
